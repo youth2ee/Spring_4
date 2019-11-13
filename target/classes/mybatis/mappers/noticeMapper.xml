@@ -4,9 +4,10 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
   <mapper namespace="noticeMapper">
+  
 	<select id="boardList" parameterType="com.naver.s4.util.Pager" resultType="com.naver.s4.model.BoardNoticeVO">
-		select * from 
-		(select N.*, rownum R from 
+		select * from
+		(select N.*, rownum R from
 		(select * from notice
 		<choose>
 			<when test="kind == 'kT'">
@@ -22,21 +23,22 @@
 		order by num desc) N)
 		where R between #{startRow} and #{lastRow}
 	</select>
-	
-	  	<select id="boardCount" parameterType="com.naver.s4.util.Pager" resultType="java.lang.Integer">
-  		select count(num) from notice
-  		  		<choose>
-  			<when test="kind == 'kT'">
-  				where title like '%'||#{search}||'%'
-  			</when>
-  			<when test="kind == 'kW'">
-  				where writer like '%'||#{search}||'%'
-  			</when>
-  			<otherwise>
-  				where contents like '%'||#{search}||'%'
-  			</otherwise>
-  		</choose>
-  	</select>
+
+
+	<select id="boardCount" parameterType="com.naver.s4.util.Pager" resultType="java.lang.Integer">
+		select count(num) from notice
+		<choose>
+			<when test="kind == 'kT'">
+				where title like '%'||#{search}||'%'
+			</when>
+			<when test="kind == 'kW'">
+				where writer like '%'||#{search}||'%'
+			</when>
+			<otherwise>
+				where contents like '%'||#{search}||'%'
+			</otherwise>
+		</choose>
+	</select>
   
   
   
