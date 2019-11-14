@@ -112,7 +112,13 @@
 
 			<a href="./${board}Update?num=${dto.num}">UPDATE</a>
 			<a href="./${board}Delete?num=${dto.num}">DELETE</a>
-
+			
+			<c:catch>
+			<c:if test="${not empty dto.ref}">
+				<a href="./${board}Reply?num=${dto.num}">REPLY</a>
+			</c:if>
+			</c:catch>
+			
 		</div>
 	</section>
 

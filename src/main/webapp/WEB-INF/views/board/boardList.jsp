@@ -153,6 +153,7 @@
 			
 			<a class="C" href="${board}Write">Go ${board} write</a><br>
 			
+			
 		</div>
 		
 	</section>

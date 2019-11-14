@@ -88,7 +88,7 @@ public class QnaController {
 	public ModelAndView boardSelect(BoardVO boardVO) throws Exception {
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("board", "qna");
-		mv.addObject("dto", boardQnaService.boardSelect(boardVO)); 
+		mv.addObject("dto", (BoardQnaVO)boardQnaService.boardSelect(boardVO)); 
 		mv.setViewName("board/boardSelect");
 		
 		return mv;
@@ -130,6 +130,7 @@ public class QnaController {
 	public ModelAndView boardReply(int num) throws Exception {
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("num", num);
+		mv.addObject("board", "qna");
 		mv.setViewName("board/boardReply");
 		
 		return mv;
@@ -137,8 +138,21 @@ public class QnaController {
 	
 	
 	@RequestMapping(value = "qnaReply", method = RequestMethod.POST)
-	public void boardReply(BoardVO boardVO) throws Exception {
+	public ModelAndView boardReply(BoardVO boardVO) throws Exception {
 		int result = boardQnaService.boardReply(boardVO);
+		String msg = "댓글추가 실패";
+		
+		if(result > 0) {
+			msg = "댓글추가 성공";
+		}
+		
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("msg", msg);
+		mv.addObject("path", "./qnaList");
+		mv.setViewName("common/common_result");
+	
+		return mv;
+	
 	}
 
 }

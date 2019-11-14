@@ -21,6 +21,11 @@
 					<label for="title">Title:</label> 
 					<input type="text" name="title" class="form-control" id="title" placeholder="Enter title">
 				</div>
+				
+				<div class="form-group">
+					<label for="writer">Writer:</label> 
+					<input type="text" name="writer" class="form-control" id="writer" placeholder="Enter writer">
+				</div>
 
 				<div class="form-group">
 					<label for="contents">Contents:</label>
