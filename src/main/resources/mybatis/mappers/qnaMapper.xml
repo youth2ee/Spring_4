@@ -67,14 +67,21 @@
   	</update>
   	
   	
-  	<insert id="boardReply" parameterType="BoardQnaVO">
+  	<insert id="boardReply" parameterType="BoardVO">
   		insert into qna values 
-  		(board_seq.nextval, #{title}, #{writer}, #{contents}, sysdate, 0, #{ref}, #{step}, #{depth})
+  		(board_seq.nextval,  #{title}, #{writer}, #{contents}, sysdate, 0, 
+        (select ref from qna where num = #{num}), 
+        (select step from qna where num = #{num})+1, 
+        (select depth from qna where num = #{num})+1 
+        )
   	</insert>
   	
-  	<update id="boardReplyUpdate" parameterType="BoardQnaVO">
+  	<update id="boardReplyUpdate" parameterType="BoardVO">
   		update qna set step = step+1
-  		where ref = #{ref} and step > #{step}
+  		where ref = 
+        (select ref from qna where num= #{num}) 
+        and step > 
+        (select step from qna where num= #{num})
   	</update>
   
   
