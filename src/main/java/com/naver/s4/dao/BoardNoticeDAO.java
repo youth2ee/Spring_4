@@ -30,8 +30,7 @@ public class BoardNoticeDAO implements BoardDAO {
 
 	@Override
 	public BoardVO boardSelect(BoardVO boardVO) throws Exception {
-
-		return null;
+		return sqlSession.selectOne(NAMESPACE+"boardSelect", boardVO);
 	}
 
 	@Override
@@ -41,14 +40,12 @@ public class BoardNoticeDAO implements BoardDAO {
 
 	@Override
 	public int boardUpdate(BoardVO boardVO) throws Exception {
-	
-		return 0;
+		return sqlSession.update(NAMESPACE+"boardUpdate", boardVO) ;
 	}
 
 	@Override
 	public int boardDelete(BoardVO boardVO) throws Exception {
-	
-		return 0;
+		return sqlSession.delete(NAMESPACE+"boardDelete", boardVO);
 	}
 
 	

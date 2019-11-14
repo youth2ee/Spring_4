@@ -5,7 +5,7 @@
   
   <mapper namespace="noticeMapper">
   
-	<select id="boardList" parameterType="com.naver.s4.util.Pager" resultType="com.naver.s4.model.BoardNoticeVO">
+	<select id="boardList" parameterType="Pager" resultType="BoardNoticeVO">
 		select * from
 		(select N.*, rownum R from
 		(select * from notice
@@ -25,7 +25,7 @@
 	</select>
 
 
-	<select id="boardCount" parameterType="com.naver.s4.util.Pager" resultType="java.lang.Integer">
+	<select id="boardCount" parameterType="Pager" resultType="Integer">
 		select count(num) from notice
 		<choose>
 			<when test="kind == 'kT'">  <!-- || : 연결연산자  -->
@@ -40,9 +40,23 @@
 		</choose>
 	</select>
 	
-	<insert id="boardWrite" parameterType="com.naver.s4.model.BoardNoticeVO">
+	<insert id="boardWrite" parameterType="BoardVO">
 		insert into notice values (board_seq.nextval,#{title}, #{writer},#{contents}, sysdate, 0)
 	</insert>
+	
+	<delete id="boardDelete" parameterType="BoardVO">
+		delete notice where num = #{num}
+	</delete>
+	
+	<select id="boardSelect" parameterType="BoardVO" resultType="BoardNoticeVO">
+		select * from notice where num = #{num}
+	</select>
+	
+  	<update id="boardUpdate" parameterType="BoardVO">
+  		update notice set title = #{title}, contents = #{contents} 		
+  		where num = #{num}
+  	</update>
+	
   
   
   </mapper>

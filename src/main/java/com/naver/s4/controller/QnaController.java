@@ -37,7 +37,7 @@ public class QnaController {
 	}
 	
 	@RequestMapping(value = "qnaWrite", method = RequestMethod.GET)
-	public ModelAndView boardWrite(Model model) throws Exception {
+	public ModelAndView boardWrite() throws Exception {
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("board", "qna");
 		mv.setViewName("board/boardWrite");
@@ -48,19 +48,82 @@ public class QnaController {
 	@RequestMapping(value = "qnaWrite", method = RequestMethod.POST)
 	public ModelAndView boardWrite(BoardVO boardVO) throws Exception {
 		int result = boardQnaService.boardWrite(boardVO);
+	
+		ModelAndView mv = new ModelAndView();
 		String msg = "작성 실패";
 		
 		if(result > 0) {
 			msg = "작성 성공";
+			mv.setViewName("redirect:./qnaList");
+		} else {
+			mv.addObject("msg", msg);
+			mv.addObject("path", "./qnaList");
+			mv.setViewName("common/common_result");
 		}
 		
-		ModelAndView mv = new ModelAndView();
-		mv.addObject("msg", msg);
-		mv.addObject("path", "qna/qnaList");
-		mv.setViewName("common/common_result");
-		
 		return mv;
-		
 	}
 	
+	@RequestMapping("qnaDelete") 
+	public ModelAndView boardDelete(BoardVO boardVO) throws Exception {
+		int result = boardQnaService.boardDelete(boardVO);
+		
+		ModelAndView mv = new ModelAndView();
+		String msg = "삭제 실패";
+		
+		if(result > 0) {
+			msg = "삭제 성공";
+			mv.setViewName("redirect:./qnaList");
+		} else {
+			mv.addObject("msg", msg);
+			mv.addObject("path", "./qnaList");
+			mv.setViewName("common/common_result");
+		}
+		
+		return mv;
+	}
+	
+	
+	@RequestMapping("qnaSelect")
+	public ModelAndView boardSelect(BoardVO boardVO) throws Exception {
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("board", "qna");
+		mv.addObject("dto", boardQnaService.boardSelect(boardVO)); 
+		mv.setViewName("board/boardSelect");
+		
+		return mv;
+	}
+	
+	
+	@RequestMapping(value = "qnaUpdate", method = RequestMethod.GET)
+	public ModelAndView boardUpdate(int num) throws Exception {
+		BoardVO boardVO = new BoardVO();
+		boardVO.setNum(num);
+		
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("dto", boardQnaService.boardSelect(boardVO));
+		mv.addObject("board", "qna");
+		mv.setViewName("board/boardUpdate");
+		
+		return mv;
+	}
+	
+	@RequestMapping(value = "qnaUpdate", method = RequestMethod.POST)
+	public ModelAndView boardUpdate(BoardVO boardVO) throws Exception {
+		int result = boardQnaService.boardUpdate(boardVO);
+		ModelAndView mv = new ModelAndView();
+		String msg = "수정 실패";
+		
+		if(result > 0) {
+			msg = "수정 성공";
+			mv.setViewName("redirect:./qnaList");
+		} else {
+			mv.addObject("msg", msg);
+			mv.addObject("path", "qna/qnaUpdate");
+			mv.setViewName("common/common_result");
+		}
+		
+		return mv;
+	}
+
 }

@@ -5,7 +5,7 @@
   
   <mapper namespace="qnaMapper">
 
-	<select id="boardList" parameterType="com.naver.s4.util.Pager" resultType="com.naver.s4.model.BoardQnaVO">
+	<select id="boardList" parameterType="Pager" resultType="BoardQnaVO">
 	select * from
 	(select N.*, rownum R from
 	(select * from qna
@@ -30,7 +30,7 @@
 	
 	
 
-	<select id="boardCount" parameterType="com.naver.s4.util.Pager" resultType="java.lang.Integer">
+	<select id="boardCount" parameterType="Pager" resultType="Integer">
 		select count(num) from qna 
 	<choose>
 		<when test="kind == 'kT'">
@@ -48,11 +48,23 @@
 	</select>
 	
 	
-	<insert id="boardWrite" parameterType="com.naver.s4.model.BoardQnaVO">
+	<insert id="boardWrite" parameterType="BoardVO">
 		insert into qna values 
 		(board_seq.nextval,#{title}, #{writer},#{contents}, sysdate, 0, board_seq.currval,0,0)
 	</insert>
   
+  	<delete id="boardDelete" parameterType="Integer">
+		delete qna where num = #{num}
+	</delete>
+  
+  	<select id="boardSelect" parameterType="BoardVO" resultType="BoardQnaVO">
+		select * from qna where num = #{num}
+	</select>
+	
+	<update id="boardUpdate" parameterType="BoardVO">
+  		update qna set title = #{title}, contents = #{contents} 		
+  		where num = #{num}
+  	</update>
   
   
   </mapper>

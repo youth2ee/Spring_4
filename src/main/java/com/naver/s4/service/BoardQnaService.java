@@ -27,8 +27,7 @@ public class BoardQnaService implements BoardService {
 
 	@Override
 	public BoardVO boardSelect(BoardVO boardVO) throws Exception {
-
-		return null;
+		return boardQnaDAO.boardSelect(boardVO);
 	}
 
 	@Override
@@ -38,14 +37,12 @@ public class BoardQnaService implements BoardService {
 
 	@Override
 	public int boardUpdate(BoardVO boardVO) throws Exception {
-
-		return 0;
+		return boardQnaDAO.boardUpdate(boardVO);
 	}
 
 	@Override
 	public int boardDelete(BoardVO boardVO) throws Exception {
-
-		return 0;
+		return boardQnaDAO.boardDelete(boardVO) ;
 	}
 	
 	
