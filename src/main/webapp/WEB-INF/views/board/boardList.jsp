@@ -64,7 +64,8 @@
 	text-decoration: none;
 }
 
-.C {text-transform: capitalize;
+.C {
+	text-transform: capitalize;
 }
 
 </style>
@@ -117,10 +118,10 @@
 							
 							
 							<td class="b4">
-							<c:catch>
-								<c:forEach begin="1" end="${dto.depth}"> --</c:forEach>
-							</c:catch>
-							<a class="a" href="./${board}Select?num=${dto.num}">${dto.title}</a>
+								<c:catch>
+									<c:forEach begin="1" end="${dto.depth}"> --</c:forEach>
+								</c:catch>
+								<a class="a" href="./${board}Select?num=${dto.num}">${dto.title}</a>
 							</td>
 							
 							
@@ -149,7 +150,7 @@
 					
 				</ul>
 			</div>
-
+			
 			<a class="C" href="${board}Write">Go ${board} write</a><br>
 			
 		</div>
