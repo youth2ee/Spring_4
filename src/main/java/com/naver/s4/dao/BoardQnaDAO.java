@@ -7,6 +7,7 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
+import com.naver.s4.model.BoardQnaVO;
 import com.naver.s4.model.BoardVO;
 import com.naver.s4.util.Pager;
 
@@ -48,5 +49,12 @@ public class BoardQnaDAO implements BoardDAO {
 		return sqlSession.delete(NAMESPACE+"boardDelete", boardVO);
 	}
 
+	public int boardReplyUpdate(BoardQnaVO boardQnaVO) throws Exception  {
+		return sqlSession.update(NAMESPACE+"boardReplyUpdate", boardQnaVO);
+	}
+	
+	public int boardReply(BoardQnaVO boardQnaVO) throws Exception {
+		return sqlSession.insert(NAMESPACE+"boardReply", boardQnaVO);
+	}
 	
 }

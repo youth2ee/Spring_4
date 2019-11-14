@@ -125,5 +125,20 @@ public class QnaController {
 		
 		return mv;
 	}
+	
+	@RequestMapping(value = "qnaReply", method = RequestMethod.GET)
+	public ModelAndView boardReply(int num) throws Exception {
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("num", num);
+		mv.setViewName("board/boardReply");
+		
+		return mv;
+	}
+	
+	
+	@RequestMapping(value = "qnaReply", method = RequestMethod.POST)
+	public void boardReply(BoardVO boardVO) throws Exception {
+		int result = boardQnaService.boardReply(boardVO);
+	}
 
 }
