@@ -36,8 +36,7 @@ public class BoardNoticeDAO implements BoardDAO {
 
 	@Override
 	public int boardWrite(BoardVO boardVO) throws Exception {
-	
-		return 0;
+		return sqlSession.insert(NAMESPACE+"boardWrite", boardVO) ;
 	}
 
 	@Override

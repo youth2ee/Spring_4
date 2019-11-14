@@ -20,7 +20,7 @@
 		</when>
 		
 		<otherwise>
-			where contents like '%'||#{search}||'%'
+			where contents like '%'||#{search}||'%' 
 		</otherwise>
 	</choose>
 
@@ -46,6 +46,12 @@
 		</otherwise>
 	</choose>
 	</select>
+	
+	
+	<insert id="boardWrite" parameterType="com.naver.s4.model.BoardQnaVO">
+		insert into qna values 
+		(board_seq.nextval,#{title}, #{writer},#{contents}, sysdate, 0, board_seq.currval,0,0)
+	</insert>
   
   
   

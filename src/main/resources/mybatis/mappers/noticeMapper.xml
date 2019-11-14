@@ -28,7 +28,7 @@
 	<select id="boardCount" parameterType="com.naver.s4.util.Pager" resultType="java.lang.Integer">
 		select count(num) from notice
 		<choose>
-			<when test="kind == 'kT'">
+			<when test="kind == 'kT'">  <!-- || : 연결연산자  -->
 				where title like '%'||#{search}||'%'
 			</when>
 			<when test="kind == 'kW'">
@@ -39,7 +39,10 @@
 			</otherwise>
 		</choose>
 	</select>
-  
+	
+	<insert id="boardWrite" parameterType="com.naver.s4.model.BoardNoticeVO">
+		insert into notice values (board_seq.nextval,#{title}, #{writer},#{contents}, sysdate, 0)
+	</insert>
   
   
   </mapper>

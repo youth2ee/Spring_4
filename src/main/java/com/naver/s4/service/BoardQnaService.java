@@ -33,8 +33,7 @@ public class BoardQnaService implements BoardService {
 
 	@Override
 	public int boardWrite(BoardVO boardVO) throws Exception {
-
-		return 0;
+		return boardQnaDAO.boardWrite(boardVO);
 	}
 
 	@Override

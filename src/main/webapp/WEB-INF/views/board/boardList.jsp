@@ -5,8 +5,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>notice list</title>
 <c:import url="../layout/bootStrap.jsp" />
+
 <style type="text/css">
 .div_t {
 	width: 70%;
@@ -63,18 +63,24 @@
 	color: black;
 	text-decoration: none;
 }
+
+.C {text-transform: capitalize;
+}
+
 </style>
 
 </head>
 <body>
 	<c:import url="../layout/nav.jsp" />
-	<h1>Notice List</h1>
+	
+	
+	<h1 class="C">${board} List</h1>
 
 	<section style="background-color: rgb(240, 240, 240); height: auto; padding-bottom: 20px;">
 		<div class="div_t">
 
 		<div>
-			<form action="./noticeList" id="frm">
+			<form action="./${board}List" id="frm">
 				<input type="hidden" value="1" name="curPage" id="curPage">
 			
 				<select name="kind">				
@@ -92,7 +98,7 @@
 			<table class="t">
 				<thead>
 					<tr class="notice">
-						<td colspan="5">NOTICE</td>
+						<td colspan="5" class="C">${board}</td>
 					</tr>
 
 					<tr class="black">
@@ -108,7 +114,16 @@
 					<c:forEach items="${list}" var="dto">
 						<tr class="b3">
 							<td>${dto.num}</td>
-							<td class="b4"><a class="a" href="./noticeSelect?num=${dto.num}">${dto.title}</a></td>
+							
+							
+							<td class="b4">
+							<c:catch>
+								<c:forEach begin="1" end="${dto.depth}"> --</c:forEach>
+							</c:catch>
+							<a class="a" href="./${board}Select?num=${dto.num}">${dto.title}</a>
+							</td>
+							
+							
 							<td>${dto.writer}</td>
 							<td>${dto.reg_date}</td>
 							<td>${dto.hit}</td>
@@ -135,7 +150,8 @@
 				</ul>
 			</div>
 
-			<a href="noticeWrite">Go notice write</a><br>
+			<a class="C" href="${board}Write">Go ${board} write</a><br>
+			
 		</div>
 		
 	</section>
@@ -153,7 +169,6 @@
 			$("#curPage").val($(this).attr("id"));
 			$("#frm").submit();
 		});
-
 	</script>
 
 </body>
