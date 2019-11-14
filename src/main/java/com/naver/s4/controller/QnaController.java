@@ -129,6 +129,7 @@ public class QnaController {
 	@RequestMapping(value = "qnaReply", method = RequestMethod.GET)
 	public ModelAndView boardReply(int num) throws Exception {
 		ModelAndView mv = new ModelAndView();
+		mv.addObject("board", "qna");
 		mv.addObject("num", num);
 		mv.setViewName("board/boardReply");
 		
