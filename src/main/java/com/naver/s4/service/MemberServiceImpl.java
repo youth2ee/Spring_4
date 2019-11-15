@@ -19,8 +19,13 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	@Override
+	public MemberVO memberIdCheck(MemberVO memberVO) throws Exception {
+		return memberDAOImpl.memberIdCheck(memberVO);
+	}
+	
+	@Override
 	public MemberVO memberLogin(MemberVO memberVO) throws Exception {
-		return null;
+		return memberDAOImpl.memberLogin(memberVO);
 	}
 
 	@Override
@@ -37,5 +42,8 @@ public class MemberServiceImpl implements MemberService {
 	public int memberPointUpdate(MemberVO memberVO) throws Exception {
 		return 0;
 	}
+
+	
+	
 
 }

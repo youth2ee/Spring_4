@@ -21,8 +21,13 @@ public class MemberDAOImpl implements MemberDAO {
 	}
 
 	@Override
+	public MemberVO memberIdCheck(MemberVO memberVO) throws Exception {
+		return sqlSession.selectOne(NAMESPACE+"memberIdCheck", memberVO);
+	}
+	
+	@Override
 	public MemberVO memberLogin(MemberVO memberVO) throws Exception {
-		return null;
+		return sqlSession.selectOne(NAMESPACE+"memberLogin", memberVO) ;
 	}
 
 	@Override
@@ -39,5 +44,8 @@ public class MemberDAOImpl implements MemberDAO {
 	public int memberPointUpdate(MemberVO memberVO) throws Exception {
 		return 0;
 	}
+
+	
+	
 
 }

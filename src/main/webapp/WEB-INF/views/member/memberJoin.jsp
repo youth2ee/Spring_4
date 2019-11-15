@@ -19,7 +19,8 @@
 			<div class="form-group">
 				<label for="id">Id:</label> 
 				<input type="text" class="form-control" id="id" name="id">
-				<button>ID 중복확인</button>
+				
+				<input type="button" class="btn btn-default" id="checkId" value="중복확인">
 			</div>
 
 			<div class="form-group">
@@ -48,15 +49,31 @@
 			</div>
 
 			<div class="form-group">
-				<label for="gender">Gender:</label> 
-				<input type="text" class="form-control" id="gender" name="gender">
+				<label for="gender">Gender: </label> 
+				
+				<label class="radio-inline">
+					<input type="radio" name="gender" checked value="F">F
+				</label> 
+				
+				<label class="radio-inline"> 
+					<input type="radio" name="gender" value="M">M
+				</label>
 			</div>
 
-			<button>JOIN</button>
+			<button class="btn btn-default">JOIN</button>
 
 		</form>
 	</div>
 
+
+<script type="text/javascript">
+
+	$("#checkId").click(function() { //callback함수
+		var id = $("#id").val();
+		window.open("./memberIdCheck?id="+id, "", "width=600, height=300, top=200, left=600");
+	});
+	
+</script>
 
 
 </body>

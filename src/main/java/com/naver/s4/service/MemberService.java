@@ -19,4 +19,6 @@ public interface MemberService {
 	//pointUpdate : 포인트 업데이트
 	public int memberPointUpdate(MemberVO memberVO) throws Exception;
 
+	//아이디 체크
+	public MemberVO memberIdCheck(MemberVO memberVO) throws Exception;
 }
