@@ -5,46 +5,51 @@
   
   <mapper namespace="qnaMapper">
 
-	<select id="boardList" parameterType="Pager" resultType="BoardQnaVO">
-	select * from
-	(select N.*, rownum R from
-	(select * from qna
-	
-	<choose>
-		<when test="kind == 'kT'">
-			where title like '%'||#{search}||'%'
-		</when>
-		
-		<when test="kind == 'kW'">
-			where writer like '%'||#{search}||'%'
-		</when>
-		
-		<otherwise>
-			where contents like '%'||#{search}||'%' 
-		</otherwise>
-	</choose>
+	<sql id="ch">
+		<choose>
+			<when test="kind == 'kT'">
+				where title like '%'||#{search}||'%'
+			</when>
 
-	order by ref desc, step asc) N)
-	where R between #{startRow} and #{lastRow}
+			<when test="kind == 'kW'">
+				where writer like '%'||#{search}||'%'
+			</when>
+
+			<otherwise>
+				where contents like '%'||#{search}||'%'
+			</otherwise>
+		</choose>
+	</sql>
+
+
+	<sql id="ref">
+		select ref from qna where num = #{num}
+	</sql>
+
+	<sql id="step">
+		select step from qna where num = #{num}
+	</sql>
+  
+
+
+
+
+	<select id="boardList" parameterType="Pager"
+		resultType="BoardQnaVO">
+		select * from
+		(select N.*, rownum R from
+		(select * from qna
+
+		<include refid="ch" />
+
+		order by ref desc, step asc) N)
+		where R between #{startRow} and #{lastRow}
 	</select>
 	
 	
-
 	<select id="boardCount" parameterType="Pager" resultType="Integer">
 		select count(num) from qna 
-	<choose>
-		<when test="kind == 'kT'">
-			where title like '%'||#{search}||'%'
-		</when>
-		
-		<when test="kind == 'kW'">
-			where writer like '%'||#{search}||'%'
-		</when>
-		
-		<otherwise>
-			where contents like '%'||#{search}||'%'
-		</otherwise>
-	</choose>
+		<include refid="ch"/>
 	</select>
 	
 	
@@ -70,8 +75,8 @@
   	<insert id="boardReply" parameterType="BoardVO">
   		insert into qna values 
   		(board_seq.nextval,  #{title}, #{writer}, #{contents}, sysdate, 0, 
-        (select ref from qna where num = #{num}), 
-        (select step from qna where num = #{num})+1, 
+        (<include refid="ref"/>), 
+        (<include refid="step"/>)+1, 
         (select depth from qna where num = #{num})+1 
         )
   	</insert>
@@ -79,9 +84,9 @@
   	<update id="boardReplyUpdate" parameterType="BoardVO">
   		update qna set step = step+1
   		where ref = 
-        (select ref from qna where num= #{num}) 
+        (<include refid="ref"/>) 
         and step > 
-        (select step from qna where num= #{num})
+        (<include refid="step"/>)
   	</update>
   
   

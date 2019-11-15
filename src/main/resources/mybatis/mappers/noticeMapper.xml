@@ -5,6 +5,8 @@
   
   <mapper namespace="noticeMapper">
   
+  
+  
 	<select id="boardList" parameterType="Pager" resultType="BoardNoticeVO">
 		select * from
 		(select N.*, rownum R from
