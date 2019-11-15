@@ -5,46 +5,43 @@
   
   <mapper namespace="qnaMapper">
 
-	<select id="boardList" parameterType="Pager" resultType="BoardQnaVO">
-	select * from
-	(select N.*, rownum R from
-	(select * from qna
-	
-	<choose>
-		<when test="kind == 'kT'">
-			where title like '%'||#{search}||'%'
-		</when>
-		
-		<when test="kind == 'kW'">
-			where writer like '%'||#{search}||'%'
-		</when>
-		
-		<otherwise>
-			where contents like '%'||#{search}||'%' 
-		</otherwise>
-	</choose>
+	<sql id="bs">
+		<choose>
+			<when test="kind == 'kT'">
+				where title like '%'||#{search}||'%'
+			</when>
 
-	order by ref desc, step asc) N)
-	where R between #{startRow} and #{lastRow}
+			<when test="kind == 'kW'">
+				where writer like '%'||#{search}||'%'
+			</when>
+
+			<otherwise>
+				where contents like '%'||#{search}||'%'
+			</otherwise>
+		</choose>
+	</sql>
+
+
+
+
+	<select id="boardList" parameterType="Pager"
+		resultType="BoardQnaVO">
+		select * from
+		(select N.*, rownum R from
+		(select * from qna
+
+		<include refid="bs" />
+
+		order by ref desc, step asc) N)
+		where R between #{startRow} and #{lastRow}
 	</select>
-	
 	
 
 	<select id="boardCount" parameterType="Pager" resultType="Integer">
 		select count(num) from qna 
-	<choose>
-		<when test="kind == 'kT'">
-			where title like '%'||#{search}||'%'
-		</when>
+	
+		<include refid="bs" />
 		
-		<when test="kind == 'kW'">
-			where writer like '%'||#{search}||'%'
-		</when>
-		
-		<otherwise>
-			where contents like '%'||#{search}||'%'
-		</otherwise>
-	</choose>
 	</select>
 	
 	

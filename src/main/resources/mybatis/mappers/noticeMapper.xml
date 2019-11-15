@@ -5,21 +5,33 @@
   
   <mapper namespace="noticeMapper">
   
-	<select id="boardList" parameterType="Pager" resultType="BoardNoticeVO">
-		select * from
-		(select N.*, rownum R from
-		(select * from notice
+  	<sql id="bs">
 		<choose>
-			<when test="kind == 'kT'">
+			<when test="kind == 'kT'"><!-- || : 연결연산자  -->
 				where title like '%'||#{search}||'%'
 			</when>
+
 			<when test="kind == 'kW'">
 				where writer like '%'||#{search}||'%'
 			</when>
+
 			<otherwise>
 				where contents like '%'||#{search}||'%'
 			</otherwise>
 		</choose>
+	</sql>
+  
+  
+  
+  
+  
+	<select id="boardList" parameterType="Pager" resultType="BoardNoticeVO">
+		select * from
+		(select N.*, rownum R from
+		(select * from notice
+
+		<include refid="bs"/>
+	
 		order by num desc) N)
 		where R between #{startRow} and #{lastRow}
 	</select>
@@ -27,17 +39,9 @@
 
 	<select id="boardCount" parameterType="Pager" resultType="Integer">
 		select count(num) from notice
-		<choose>
-			<when test="kind == 'kT'">  <!-- || : 연결연산자  -->
-				where title like '%'||#{search}||'%'
-			</when>
-			<when test="kind == 'kW'">
-				where writer like '%'||#{search}||'%'
-			</when>
-			<otherwise>
-				where contents like '%'||#{search}||'%'
-			</otherwise>
-		</choose>
+
+		<include refid="bs"/>
+		
 	</select>
 	
 	<insert id="boardWrite" parameterType="BoardVO">
