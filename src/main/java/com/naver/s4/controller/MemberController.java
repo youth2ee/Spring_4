@@ -72,21 +72,11 @@ public class MemberController {
 	public String memberLogin(MemberVO memberVO, HttpSession session) throws Exception {
 		memberVO = memberServiceImpl.memberLogin(memberVO);
 		
-		/*
-		 * String from = memberVO.getBirth();
-		 * 
-		 * SimpleDateFormat transFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-		 * 
-		 * Date to = (Date) transFormat.parse(from);
-		 * 
-		 * System.out.println(to);
-		 */
-
-		memberVO
-
- 
 		
 		if (memberVO != null) {
+			String birth =  memberVO.getBirth();
+			birth =  birth.substring(0, 10);
+			memberVO.setBirth(birth);
 			session.setAttribute("member", memberVO);
 		}
 
@@ -132,13 +122,14 @@ public class MemberController {
 	}
 
 	@PostMapping("memberUpdate")
-	public ModelAndView memberUpdate(MemberVO memberVO) throws Exception {
+	public ModelAndView memberUpdate(MemberVO memberVO, HttpSession session) throws Exception {		
 		int result = memberServiceImpl.memberUpdate(memberVO);
 		String msg = "수정 실패";
 
 		ModelAndView mv = new ModelAndView();
 		if (result > 0) {
 			msg = "수정 성공";
+			session.setAttribute("member", memberVO);
 		}
 
 		mv.addObject("msg", msg);

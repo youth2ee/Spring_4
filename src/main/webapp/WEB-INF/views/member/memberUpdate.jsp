@@ -25,7 +25,7 @@
 
 			<div class="form-group">
 				<label for="pw">Password:</label> 
-				<input type="password" class="form-control" id="pw" name="pw">
+				<input type="password" class="form-control" id="pw" name="pw" value="${member.pw}">
 			</div>
 
 
@@ -41,7 +41,7 @@
 
 	 		<div class="form-group">
 				<label for="birth">Birth:</label> 
-				<input type="date" class="form-control" id="birth" name="birth" value="1992-07-20">
+				<input type="date" class="form-control" id="birth" name="birth" value="${member.birth}">
 				
 				
 			</div> 
