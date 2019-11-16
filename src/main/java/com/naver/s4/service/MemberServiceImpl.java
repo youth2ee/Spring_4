@@ -43,6 +43,11 @@ public class MemberServiceImpl implements MemberService {
 		return 0;
 	}
 
+	@Override
+	public MemberVO memberSearchId(MemberVO memberVO) throws Exception {
+		return memberDAOImpl.memberSearchId(memberVO);
+	}
+
 	
 	
 

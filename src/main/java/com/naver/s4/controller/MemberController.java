@@ -137,7 +137,15 @@ public class MemberController {
 		mv.setViewName("common/common_result");
 
 		return mv;
-
+	}
+	
+	@GetMapping("memberSearchId")
+	public void memberSearchId() throws Exception {
+	}
+	
+	@PostMapping("memberSearchId")
+	public void memberSearchId(MemberVO memberVO) throws Exception{
+		
 	}
 
 }
