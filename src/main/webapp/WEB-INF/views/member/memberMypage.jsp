@@ -31,6 +31,11 @@
 				<label for="name">Name:</label> 
 				<input type="text" class="form-control" id="name" name="name" value="${member.name}" readonly="readonly">
 			</div>
+			
+			<div class="form-group">
+				<label for="phone">Phone:</label> 
+				<input type="text" class="form-control" id="phone" name="phone" value="${member.phone}" readonly="readonly">
+			</div>
 
 			<div class="form-group">
 				<label for="email">Email:</label> 

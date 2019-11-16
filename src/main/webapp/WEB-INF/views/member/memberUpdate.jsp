@@ -33,6 +33,11 @@
 				<label for="name">Name:</label> 
 				<input type="text" class="form-control" id="name" name="name" value="${member.name}">
 			</div>
+			
+			<div class="form-group">
+				<label for="phone">Phone:</label> 
+				<input type="number" class="form-control" id="phone" name="phone" value="${member.number}">
+			</div>
 
 			<div class="form-group">
 				<label for="email">Email:</label> 

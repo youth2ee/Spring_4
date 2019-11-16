@@ -32,7 +32,7 @@
     <div style="padding-top: 20px;">
     <c:choose>
     	<c:when test="${not empty id}">
-    	<p>당신의 아이디는 <span style="font-weight: bolder;font-size: medium;">${id}</span>입니다.</p>    	
+    	<p>당신의 비밀번호는 <span style="font-weight: bolder;font-size: medium;">${pw}</span>입니다.</p>    	
     	</c:when>
     	
     	<c:otherwise>

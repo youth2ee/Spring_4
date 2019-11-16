@@ -144,8 +144,35 @@ public class MemberController {
 	}
 	
 	@PostMapping("memberSearchId")
-	public void memberSearchId(MemberVO memberVO) throws Exception{
+	public ModelAndView memberSearchId(MemberVO memberVO) throws Exception{
+		memberVO = memberServiceImpl.memberSearchId(memberVO);
+		ModelAndView mv = new ModelAndView();
+		String id = "";
+		String id_1 = "";
+		String id_2 = "";
+		String re = "";
 		
+		if(memberVO != null) {
+			id = memberVO.getId();
+			id_1 = id.substring(0, 3);
+			id_2 = id.substring(2);
+			
+			for(int i =0; i < id_2.length();i++) {
+				re = re + "*";
+			}
+			
+			id_2 = id_2.replaceAll(id_2, re);
+			id = id_1 + id_2;
+
+			mv.addObject("id", id);
+		} else {
+			mv.addObject("msg", "아이디를 찾을 수 없습니다.");
+		}
+		
+		mv.setViewName("member/memberSearchId");
+	
+		return mv;
 	}
+	
 
 }
