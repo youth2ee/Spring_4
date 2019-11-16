@@ -15,6 +15,9 @@ public class MemberServiceImpl implements MemberService {
 
 	@Override
 	public int memberJoin(MemberVO memberVO) throws Exception {
+		String phone = memberVO.getPhone();
+		phone = phone.substring(0, 2);
+		System.out.println(phone);
 		return memberDAOImpl.memberJoin(memberVO);
 	}
 
@@ -41,6 +44,11 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public int memberPointUpdate(MemberVO memberVO) throws Exception {
 		return 0;
+	}
+
+	@Override
+	public MemberVO memberSearchId(MemberVO memberVO) throws Exception {
+		return memberDAOImpl.memberSearchId(memberVO);
 	}
 
 	

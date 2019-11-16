@@ -45,6 +45,11 @@ public class MemberDAOImpl implements MemberDAO {
 		return 0;
 	}
 
+	@Override
+	public MemberVO memberSearchId(MemberVO memberVO) throws Exception {
+		return sqlSession.selectOne(NAMESPACE+"memberSearchId", memberVO);
+	}
+
 	
 	
 

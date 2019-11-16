@@ -1,3 +1,4 @@
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
         <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
@@ -37,6 +38,12 @@
 				<label for="name">Name:</label> 
 				<input type="text" class="form-control" id="name" name="name">
 			</div>
+
+			<div class="form-group">
+				<label for="phone">Name:</label> 
+				<input type="number" class="form-control" id="phone" name="phone">
+			</div>
+
 
 			<div class="form-group">
 				<label for="email">Email:</label> 

@@ -21,4 +21,7 @@ public interface MemberDAO {
 	
 	//id체크
 	public MemberVO memberIdCheck(MemberVO memberVO) throws Exception;
+
+	//아이디 찾기 : 폰번호랑 이메일
+	public MemberVO memberSearchId(MemberVO memberVO) throws Exception;
 }
