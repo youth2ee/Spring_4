@@ -15,9 +15,6 @@ public class MemberServiceImpl implements MemberService {
 
 	@Override
 	public int memberJoin(MemberVO memberVO) throws Exception {
-		String phone = memberVO.getPhone();
-		phone = phone.substring(0, 2);
-		System.out.println(phone);
 		return memberDAOImpl.memberJoin(memberVO);
 	}
 

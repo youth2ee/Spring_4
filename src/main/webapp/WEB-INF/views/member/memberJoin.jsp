@@ -40,7 +40,7 @@
 			</div>
 
 			<div class="form-group">
-				<label for="phone">Name:</label> 
+				<label for="phone">Phone:</label> 
 				<input type="number" class="form-control" id="phone" name="phone">
 			</div>
 

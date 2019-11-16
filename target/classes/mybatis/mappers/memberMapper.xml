@@ -33,14 +33,10 @@
   		where id = #{id}
  	</update>
  	
- 	<select id="memberSearchId" parameterType="MemberVO" >
+ 	<select id="memberSearchId" parameterType="MemberVO" resultType="MemberVO" >
  		select * from member 
  		where phone = #{phone} and email = #{email}	
  	</select>
   
-  
-  
-  
-  
-  
+ 
   </mapper>
