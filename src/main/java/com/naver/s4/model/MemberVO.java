@@ -7,6 +7,7 @@ public class MemberVO {
 	private String id;
 	private String pw;
 	private String name;
+	private String phone;
 	private String email;
 	private String birth;
 	private String gender;
@@ -54,6 +55,12 @@ public class MemberVO {
 	}
 	public void setPoint(int point) {
 		this.point = point;
+	}
+	public String getPhone() {
+		return phone;
+	}
+	public void setPhone(String phone) {
+		this.phone = phone;
 	}
 	
 	

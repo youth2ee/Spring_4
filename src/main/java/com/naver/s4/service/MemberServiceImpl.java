@@ -30,7 +30,7 @@ public class MemberServiceImpl implements MemberService {
 
 	@Override
 	public int memberUpdate(MemberVO memberVO) throws Exception {
-		return 0;
+		return memberDAOImpl.memberUpdate(memberVO);
 	}
 
 	@Override
@@ -41,6 +41,11 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public int memberPointUpdate(MemberVO memberVO) throws Exception {
 		return 0;
+	}
+
+	@Override
+	public MemberVO memberSearchId(MemberVO memberVO) throws Exception {
+		return memberDAOImpl.memberSearchId(memberVO);
 	}
 
 	

@@ -32,7 +32,7 @@ public class MemberDAOImpl implements MemberDAO {
 
 	@Override
 	public int memberUpdate(MemberVO memberVO) throws Exception {
-		return 0;
+		return sqlSession.update(NAMESPACE+"memberUpdate", memberVO);
 	}
 
 	@Override
@@ -43,6 +43,11 @@ public class MemberDAOImpl implements MemberDAO {
 	@Override
 	public int memberPointUpdate(MemberVO memberVO) throws Exception {
 		return 0;
+	}
+
+	@Override
+	public MemberVO memberSearchId(MemberVO memberVO) throws Exception {
+		return sqlSession.selectOne(NAMESPACE+"memberSearchId", memberVO);
 	}
 
 	

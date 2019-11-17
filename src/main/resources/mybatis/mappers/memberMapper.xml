@@ -6,8 +6,8 @@
   <mapper namespace="memberMapper">
   
  	<insert id="memberJoin" parameterType="MemberVO">
-		insert into member (id,pw,name,email,birth,gender)
-		values (#{id}, #{pw}, #{name}, #{email}, #{birth}, #{gender})
+		insert into member (id,pw,name,phone,email,birth,gender)
+		values (#{id}, #{pw}, #{name}, #{phone}, #{email}, #{birth}, #{gender})
  	</insert>
  	
  	
@@ -24,10 +24,19 @@
  	<delete id="memberDelete" parameterType="MemberVO">
  		delete member where id=#{id}
  	</delete> 
+ 	
+ 	<update id="memberUpdate" parameterType="MemberVO">
+ 		update member set
+ 		pw = #{pw}, name = #{name}, 
+ 		phone = #{phone}, email = #{email},
+ 		birth = #{birth}, gender = #{gender}  		
+  		where id = #{id}
+ 	</update>
+ 	
+ 	<select id="memberSearchId" parameterType="MemberVO" resultType="MemberVO" >
+ 		select * from member 
+ 		where phone = #{phone} and email = #{email}	
+ 	</select>
   
-  
-  
-  
-  
-  
+ 
   </mapper>
