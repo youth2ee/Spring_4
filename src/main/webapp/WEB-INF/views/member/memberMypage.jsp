@@ -11,7 +11,7 @@
 <body>
 <c:import url="../layout/nav.jsp" />
 
-<div class="container">
+<div class="container" style="padding-bottom: 30px;">
 		<h2>Mypage</h2>
 
 		<form action="#">

@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Member Login</title>
+<title>Member Search</title>
 <c:import url="../layout/bootStrap.jsp" />
 </head>
 <body>

@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Member Login</title>
+<title>Member SEARCH</title>
 <c:import url="../layout/bootStrap.jsp" />
 </head>
 <body>
@@ -13,8 +13,13 @@
 
 
 <div class="container">
-  <h2>ID SEARCH</h2>
-  <form action="./memberSearchId" method="post">
+  <h2>Password SEARCH</h2>
+  <form action="./memberSearchPw" method="post">
+  
+  	<div class="form-group">
+      <label for="id">ID:</label>
+      <input type="text" class="form-control" id="id" placeholder="Enter id" name="id">
+    </div>
   
     <div class="form-group">
       <label for="phone">PHONE:</label>
@@ -27,11 +32,11 @@
     </div>
     
     
-    <button type="submit" class="btn btn-default">아이디 찾기</button>
+    <button type="submit" class="btn btn-default">비밀번호 찾기</button>
     
     <div style="padding-top: 20px;">
     <c:choose>
-    	<c:when test="${not empty id}">
+    	<c:when test="${not empty pw}">
     	<p>당신의 비밀번호는 <span style="font-weight: bolder;font-size: medium;">${pw}</span>입니다.</p>    	
     	</c:when>
     	

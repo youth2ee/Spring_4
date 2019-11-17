@@ -174,5 +174,26 @@ public class MemberController {
 		return mv;
 	}
 	
-
+	@GetMapping("memberSearchPw")
+	public void memberSearchPw() throws Exception{
+	}
+	
+	
+	@PostMapping("memberSearchPw")
+	public ModelAndView memberSearchPw(MemberVO memberVO) throws Exception{
+		memberVO = memberServiceImpl.memberSearchPw(memberVO);
+		ModelAndView mv = new ModelAndView();
+		
+		if(memberVO != null) {
+			mv.addObject("pw", memberVO.getPw());
+		} else {
+			mv.addObject("msg", "비밀번호를 찾을 수 없습니다.");
+		}
+		
+		mv.setViewName("member/memberSearchPw");
+		
+		return mv;
+	}
+	
+	
 }

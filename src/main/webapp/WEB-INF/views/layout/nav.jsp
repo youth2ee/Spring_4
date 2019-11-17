@@ -32,7 +32,8 @@
 			<li class="dropdown">
 			<a class="dropdown-toggle" data-toggle="dropdown" href="#">MEMBER<span class="caret"></span></a>
 				<ul class="dropdown-menu">
-					<li><a href="${pageContext.request.contextPath}/member/memberSearchId">ID찾기</a></li>
+					<li><a href="${pageContext.request.contextPath}/member/memberSearchId">Search ID</a></li>
+					<li><a href="${pageContext.request.contextPath}/member/memberSearchPw">Search PW</a></li>
 				</ul>
 			</li>
 		

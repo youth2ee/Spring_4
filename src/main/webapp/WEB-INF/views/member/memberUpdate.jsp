@@ -12,7 +12,7 @@
 <body>
 <c:import url="../layout/nav.jsp" />
 
-	<div class="container">
+	<div class="container" style="padding-bottom: 30px;">
 		<h2>Member Update</h2>
 
 		<form action="./memberUpdate" method="post">
@@ -36,7 +36,7 @@
 			
 			<div class="form-group">
 				<label for="phone">Phone:</label> 
-				<input type="number" class="form-control" id="phone" name="phone" value="${member.number}">
+				<input type="number" class="form-control" id="phone" name="phone" value="${member.phone}">
 			</div>
 
 			<div class="form-group">
