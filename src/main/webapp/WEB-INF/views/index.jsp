@@ -14,11 +14,13 @@
 		<h1>Hello world!</h1>
 		<P>The time on the server is ${serverTime}.</P>
 
-
+		<!--  -->
+		
 		<input type="text" id="num"> 
 		<div><button id="btn">NUMBER</button></div>
 		<div id="result" style="height: 30px;"></div>
 		
+		<!--  -->
 		
 		<div>
 			<select id="select">
@@ -27,7 +29,7 @@
 				<option value="bird">Bird</option>
 			</select>
 			
-			<div id="kind" style="">
+			<div id="kind">
 				<select>
 					<option>강아지1</option>
 					<option>강아지2</option>
@@ -36,19 +38,15 @@
 			</div>
 		</div>
 		
+		<!--  -->
 		
-		<div id="noticeResult">
-			<h1>NEW NOTICE LIST</h1>
-			
-			
-				
-		</div>
+		<div id="noticeResult"></div>
 		
 	</div>
 	
+	<!-- script -->
 	
 	<script type="text/javascript">
-	
 
 		$("#btn").click(function() {
 
@@ -142,7 +140,6 @@
 				xhttp.onreadystatechange = function() {
 					if (this.readyState == 4 && this.status == 200) {
 						$("#noticeResult").html(this.responseText);
-						alert("되냐");
 					}
 				};
 				

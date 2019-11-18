@@ -40,8 +40,9 @@ public class Pager {
 	}
 	
 	public Integer getPerPage() {
-		
-		 if(perPage == null || perPage == 0) { perPage = 10; }
+		 if(perPage == null || perPage == 0) {
+			 perPage = 10; 
+		 }
 		 
 		return perPage;
 	}
