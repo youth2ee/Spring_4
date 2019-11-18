@@ -30,10 +30,6 @@ public class MemberController {
 
 	@PostMapping(value = "memberJoin")
 	public ModelAndView memberJoin(MemberVO memberVO) throws Exception {
-
-		
-		
-		
 		int result = memberServiceImpl.memberJoin(memberVO);
 		String msg = "회원가입 실패";
 
@@ -76,9 +72,15 @@ public class MemberController {
 		
 		
 		if (memberVO != null) {
-			String birth =  memberVO.getBirth();
-			birth =  birth.substring(0, 10);
-			memberVO.setBirth(birth);
+			/*
+			 * String birth = memberVO.getBirth(); 
+			 * birth = birth.substring(0, 10);
+			 * memberVO.setBirth(birth);
+			 * 이 작업을 아예 db 쿼리문에서 
+			 * to_char(birth,'yyyy-mm-dd') birth
+			 * 로 받아오는걸로 할 수 있다.
+			 */
+			
 			session.setAttribute("member", memberVO);
 		}
 

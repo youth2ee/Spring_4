@@ -16,7 +16,8 @@
  	</select>
  	
  	<select id="memberLogin" parameterType="MemberVO" resultType="MemberVO">
- 		select * from member
+ 		select id,name,phone,email, to_char(birth,'yyyy-mm-dd') birth, gender 
+ 		from member
  		where id = #{id} and pw = #{pw}
  	</select>
  	
