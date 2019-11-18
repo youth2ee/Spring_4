@@ -16,7 +16,7 @@
  	</select>
  	
  	<select id="memberLogin" parameterType="MemberVO" resultType="MemberVO">
- 		select * from member 
+ 		select * from member
  		where id = #{id} and pw = #{pw}
  	</select>
  	

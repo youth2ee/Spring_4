@@ -11,8 +11,8 @@
 <body>
 <c:import url="../layout/nav.jsp" />
 
-<div class="container" style="padding-bottom: 30px;">
-		<h2>Mypage</h2>
+	<div class="container" style="padding-bottom: 30px;">
+		<h2>My page</h2>
 
 		<form action="#">
 		
@@ -58,17 +58,16 @@
 		</form>
 	</div>
 
-<script type="text/javascript">
-	$("#del").click(function() {
-		location.href="./memberDelete";
-	});
-	
-	$("#up").click(function() {
-		location.href="./memberUpdate";
-	});
-	
 
-</script>
+	<script type="text/javascript">
+		$("#del").click(function() {
+			location.href = "./memberDelete";
+		});
+
+		$("#up").click(function() {
+			location.href = "./memberUpdate";
+		});
+	</script>
 
 
 </body>

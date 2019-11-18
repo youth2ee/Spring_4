@@ -13,7 +13,7 @@
 
 
 <div class="container">
-  <h2>Password SEARCH</h2>
+  <h2>PASSWORD SEARCH</h2>
   <form action="./memberSearchPw" method="post">
   
   	<div class="form-group">

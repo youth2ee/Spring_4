@@ -26,11 +26,14 @@ public class MemberController {
 	private MemberServiceImpl memberServiceImpl;
 
 	@GetMapping(value = "memberJoin")
-	public void memberJoin() throws Exception {
-	}
+	public void memberJoin() throws Exception {}
 
 	@PostMapping(value = "memberJoin")
 	public ModelAndView memberJoin(MemberVO memberVO) throws Exception {
+
+		
+		
+		
 		int result = memberServiceImpl.memberJoin(memberVO);
 		String msg = "회원가입 실패";
 
@@ -65,8 +68,7 @@ public class MemberController {
 	}
 
 	@GetMapping("memberLogin")
-	public void memberLogin() throws Exception {
-	}
+	public void memberLogin() throws Exception {}
 
 	@PostMapping("memberLogin")
 	public String memberLogin(MemberVO memberVO, HttpSession session) throws Exception {
