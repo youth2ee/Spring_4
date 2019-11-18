@@ -78,7 +78,7 @@
 	<h1 class="C">${board} List</h1>
 
 	</c:if>
-	
+	<h1>${pager.perPage}</h1>
 	<section style="background-color: rgb(240, 240, 240); height: auto; padding-bottom: 20px;">
 		<div class="div_t">
 	

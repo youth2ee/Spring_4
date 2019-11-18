@@ -35,16 +35,17 @@ public class Pager {
 		this.curPage = curPage;
 	}
 	
-	public Integer getPerPage() {
-		if(perPage == null || perPage == 0) {
-			perPage = 10;
-		}
-		return perPage;
-	}
-
 	public void setPerPage(Integer perPage) {
 		this.perPage = perPage;
 	}
+	
+	public Integer getPerPage() {
+		
+		 if(perPage == null || perPage == 0) { perPage = 10; }
+		 
+		return perPage;
+	}
+
 
 	public Integer getStartRow() {
 		return startRow;

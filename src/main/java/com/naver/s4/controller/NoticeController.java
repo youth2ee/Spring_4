@@ -23,22 +23,25 @@ public class NoticeController {
 
 	@RequestMapping("noticeList")
 	public ModelAndView boardList(Pager pager, int result) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		if(result == 0) {
+			pager.setPerPage(10);
+			mv.addObject("pager", pager);
+		} else {
+			pager.setPerPage(5);
+			mv.addObject("pager", pager);
+		}
+		
 		List<BoardVO> ar = boardNoticeService.boardList(pager);
 		
-		ModelAndView mv = new ModelAndView();
 		
 			mv.addObject("list", ar);
 			mv.addObject("board", "notice");
 			
 			mv.addObject("result", result);
 			
-			if(result == 0) {
-				mv.addObject("pager", pager);								
-			} else {
-				pager.setPerPage(5);
-				mv.addObject("pager", pager);
-			}
 			
+			System.out.println(pager.getPerPage());
 			mv.setViewName("board/boardList");
 
 		
