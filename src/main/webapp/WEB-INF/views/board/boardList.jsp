@@ -10,7 +10,6 @@
 <style type="text/css">
 .div_t {
 	width: 70%;
-	height: 910px;
 	margin: 0 auto;
 	background-color: rgb(240, 240, 240);
 }
@@ -72,16 +71,21 @@
 
 </head>
 <body>
+
+	<c:if test="${empty result}">
 	<c:import url="../layout/nav.jsp" />
-	
 	
 	<h1 class="C">${board} List</h1>
 
+	</c:if>
+	
 	<section style="background-color: rgb(240, 240, 240); height: auto; padding-bottom: 20px;">
 		<div class="div_t">
-
+	
+		<c:if test="${empty result}">	
 		<div>
 			<form action="./${board}List" id="frm">
+			
 				<input type="hidden" value="1" name="curPage" id="curPage">
 			
 				<select name="kind">				
@@ -95,7 +99,8 @@
 				<button>검색</button>
 			</form>
 		</div>
-
+		</c:if>
+		
 			<table class="t">
 				<thead>
 					<tr class="notice">
@@ -132,7 +137,9 @@
 					</c:forEach>
 				</tbody>
 			</table>
-
+			
+		
+			<c:if test="${empty result}">
 			<div style="width: 100%; margin: 0 auto; text-align: center; padding-top: 10px;">
 				<ul class="pagination" style="margin: 0 auto; text-align: center;">
 					
@@ -153,7 +160,7 @@
 			
 			<a class="C" href="${board}Write">Go ${board} write</a><br>
 			
-			
+		</c:if>
 		</div>
 		
 	</section>
