@@ -20,7 +20,7 @@
 			<div class="form-group">
 				<label for="id">Id:</label> 
 				<input type="text" class="form-control" id="id" name="id">
-				<div id="checkId"></div>
+				<div id="checkId" style="padding-top: 10px; "></div>
 			
 			</div>
 
@@ -74,15 +74,40 @@
 
 
 	<script type="text/javascript">
-	var id = $("#id").val();
 	
-		$("#id").blur(function() {
-			$.get("./memberIdCheck?id="+id, function(data) {
-				alert("오케오케")
-				
-			});
-			
+	$("#id").blur(function() {
+		check();
+	}); 
+	
+	
+ 	$("#id").change(function() {
+		$("#checkId").html(""); 
+		check();
+	});
+ 	
+ 	function check() {
+ 		var id = $('#id').val();
+		$.get("./memberIdCheck?id="+id, function(data) {
+			/*  $("#checkId").html(data);  */
+			 
+			 if(data == 1){
+				 /* 중복가능 */
+				 $("#checkId").css("color","green");
+				 $("#checkId").html("사용가능한 아이디입니다.");
+				 
+			 } else {
+				 /* 중복불가능 */
+				 $('#id').val("");
+				 $("#checkId").css("color","red");
+				 $("#checkId").html("사용불가능한 아이디입니다.");
+				 $('#id').focus();
+			 }
+			 
 		});
+	}
+ 	
+ 	
+
 	</script>
 
 

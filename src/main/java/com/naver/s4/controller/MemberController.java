@@ -48,7 +48,15 @@ public class MemberController {
 	}
 
 	@GetMapping(value = "memberIdCheck")
-	public Model memberIdCheck(String id, Model model) throws Exception {
+	public void memberIdCheck(String id, Model model, MemberVO memberVO) throws Exception {
+		memberVO.setId(id);
+		memberVO = memberServiceImpl.memberIdCheck(memberVO);
+		
+		if(memberVO == null) {
+			model.addAttribute("msg", 1);
+		} else {
+			model.addAttribute("msg", 2);
+		}
 		
 	}
 
