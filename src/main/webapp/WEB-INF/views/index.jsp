@@ -48,6 +48,7 @@
 	
 	<script type="text/javascript">
 
+	//1. 클릭하면 번호뜨게하기
 		$("#btn").click(function() {
 
 			//var xhttp라고 선언을 꼭 안해주고 변수를 바로 사용해도 가능하다. 
@@ -94,8 +95,8 @@
 			};
 		});
 		
-		//
 		
+		//2. select 연계하기 
 			$("#select").change(function() {
 				//1. xmlhttp 객체생성
 				var xhttp;
@@ -120,9 +121,8 @@
 				
 			});
 		
-		//
 		
-				//1. xmlhttp 객체생성
+		//3. list 불러오기 
 				var xhttp;
 				if (XMLHttpRequest) {
 					xhttp = new XMLHttpRequest();
@@ -130,12 +130,9 @@
 					xhttp = new ActiveXObject("Microsoft.XMLHTTP");
 				}
 
-				//2. 요청정보 작성
-				xhttp.open("GET", "notice/noticeList?result=5");
-				
-				//3. 요청정보 전송 : GET
+				/* xhttp.open("GET", "notice/noticeList?result=5"); */
+				xhttp.open("GET", "notice/noticeResult");
 				xhttp.send();
-				
 				
 				xhttp.onreadystatechange = function() {
 					if (this.readyState == 4 && this.status == 200) {

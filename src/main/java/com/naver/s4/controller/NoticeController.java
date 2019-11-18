@@ -6,6 +6,7 @@ import javax.inject.Inject;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -20,30 +21,38 @@ public class NoticeController {
 	
 	@Inject
 	private BoardNoticeService boardNoticeService;
-
+	
+	@GetMapping("noticeResult")
+	public String noticeResult(Pager pager, Model model) throws Exception{
+		pager.setPerPage(5);
+		List<BoardVO> ar = boardNoticeService.boardList(pager);
+		
+		model.addAttribute("list", ar);
+		
+		return "board/noticeResult";
+	}
+	
 	@RequestMapping("noticeList")
-	public ModelAndView boardList(Pager pager, int result) throws Exception{
+	public ModelAndView boardList(Pager pager) throws Exception{
 		ModelAndView mv = new ModelAndView();
-		if(result == 0) {
-			pager.setPerPage(10);
-			mv.addObject("pager", pager);
-		} else {
-			pager.setPerPage(5);
-			mv.addObject("pager", pager);
-		}
+		
+	//	if(result == 0) {
+	//		pager.setPerPage(10);
+	//		mv.addObject("pager", pager);
+	//	} else {
+	//		pager.setPerPage(5);
+	//		mv.addObject("pager", pager);
+	//	}
 		
 		List<BoardVO> ar = boardNoticeService.boardList(pager);
 		
-		
 			mv.addObject("list", ar);
 			mv.addObject("board", "notice");
+			mv.addObject("pager", pager);
 			
-			mv.addObject("result", result);
+		/*  mv.addObject("result", result); */
 			
-			
-			System.out.println(pager.getPerPage());
 			mv.setViewName("board/boardList");
-
 		
 		return mv;
 	}
