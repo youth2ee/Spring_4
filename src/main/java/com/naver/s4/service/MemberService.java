@@ -22,6 +22,9 @@ public interface MemberService {
 	//아이디 체크
 	public MemberVO memberIdCheck(MemberVO memberVO) throws Exception;
 	
+	//이메일 체크
+	public MemberVO memberEmailCheck(MemberVO memberVO) throws Exception;
+	
 	//아이디 검색
 	public MemberVO memberSearchId(MemberVO memberVO) throws Exception;
 }

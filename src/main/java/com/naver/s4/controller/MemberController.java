@@ -59,6 +59,20 @@ public class MemberController {
 		}
 		
 	}
+	
+	@GetMapping(value = "memberEmailCheck")
+	public void memberEmailCheck(String email, Model model, MemberVO memberVO) throws Exception {
+		memberVO.setId(email);
+		memberVO = memberServiceImpl.memberEmailCheck(memberVO);
+		
+		if(memberVO == null) {
+			model.addAttribute("msg", 1);
+		} else {
+			model.addAttribute("msg", 2);
+		}
+		
+	}
+	
 
 	@GetMapping("memberLogin")
 	public void memberLogin() throws Exception {
