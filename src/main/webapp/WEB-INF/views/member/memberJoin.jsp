@@ -75,58 +75,59 @@
 
 
 	<script type="text/javascript">
- 	var idCheck = false;
- 	//false면 중복된 아이디 가지거나 중복검사를 하지 않았다.
- 	//true면 중복되지 않은 아이디를 가진다.
- 	
- 	$("#join").click(function() {
-		alert(idCheck);
-	});
- 	//
+		var idCheck = false;
+		//false면 중복된 아이디 가지거나 중복검사를 하지 않았다.
+		//true면 중복되지 않은 아이디를 가진다.
 
-	
-	
-	$("#id").blur(function() {
-		check();
-	}); 
-	
-	
- 	$("#id").change(function() {
-		$("#checkId").html(""); 
-		check();
-	});
- 	
- 	function check() {
- 		var id = $('#id').val();
-		$.get("./memberIdCheck?id="+id, function(data) {
-			/*  $("#checkId").html(data);  */
-			 
-			 if(data == 1){
-				 /* 중복 가능 */
-				 /* $("#checkId").css("color","green"); */
-				 
-				 if(id == ""){
-					alert("아이디를 입력하세요") 
-				 } else {
-			    	$("#checkId").prop("class","text-success");
-				 	$("#checkId").html("사용가능한 아이디입니다.");
-				 	idCheck = true;
-				 }
-			 } else {
-				 /* 중복 불가능 */
-				 $('#id').val("");
-				 /* $("#checkId").css("color","red"); */
-				 $("#checkId").prop("class","text-danger");
-				 $("#checkId").html("사용불가능한 아이디입니다.");
-				 $('#id').focus();
-				 idCheck = false;
-			 }
+		$("#join").click(function() {
+			alert(idCheck);
 		});
-	}
- 	
- 	//
 
+		//
 
+		$("#id").blur(function() {
+			check();
+		});
+
+		$("#id").change(function() {
+			$("#checkId").html("");
+			check();
+		});
+
+		function check() {
+			var id = $('#id').val();
+			$.get("./memberIdCheck?id=" + id, function(data) {
+				/*  $("#checkId").html(data);  */
+
+				if (data == 1) {
+					/* 중복 가능 */
+					/* $("#checkId").css("color","green"); */
+
+					if (id == "") {
+						alert("아이디를 입력하세요")
+					} else {
+						$("#checkId").prop("class", "text-success");
+						$("#checkId").html("사용가능한 아이디입니다.");
+						idCheck = true;
+					}
+				} else {
+					/* 중복 불가능 */
+					$('#id').val("");
+					/* $("#checkId").css("color","red"); */
+					$("#checkId").prop("class", "text-danger");
+					$("#checkId").html("사용불가능한 아이디입니다.");
+					$('#id').focus();
+					idCheck = false;
+				}
+			});
+		}
+
+		//모든 칸 입력하기
+		
+		//비밀번호 확인
+		
+		//이메일 확인 (=아이디확인)
+		
 	</script>
 
 
