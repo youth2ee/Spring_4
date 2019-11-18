@@ -91,18 +91,19 @@
 			/*  $("#checkId").html(data);  */
 			 
 			 if(data == 1){
-				 /* 중복가능 */
-				 $("#checkId").css("color","green");
+				 /* 중복 가능 */
+				 /* $("#checkId").css("color","green"); */
+			     $("#checkId").prop("class","text-success");
 				 $("#checkId").html("사용가능한 아이디입니다.");
 				 
 			 } else {
-				 /* 중복불가능 */
+				 /* 중복 불가능 */
 				 $('#id').val("");
-				 $("#checkId").css("color","red");
+				 /* $("#checkId").css("color","red"); */
+				 $("#checkId").prop("class","text-danger");
 				 $("#checkId").html("사용불가능한 아이디입니다.");
 				 $('#id').focus();
 			 }
-			 
 		});
 	}
  	
