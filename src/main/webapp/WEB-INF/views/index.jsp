@@ -14,6 +14,11 @@
 		<h1>Hello world!</h1>
 		<P>The time on the server is ${serverTime}.</P>
 	</div>
+	
+	<script type="text/javascript">
+		var xmlhttp = new XMLHttpRequest();
+
+	</script>
 
 </body>
 </html>
