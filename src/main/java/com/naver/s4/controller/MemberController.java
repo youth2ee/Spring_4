@@ -48,20 +48,8 @@ public class MemberController {
 	}
 
 	@GetMapping(value = "memberIdCheck")
-	public Model memberIdCheck(MemberVO memberVO, Model model) throws Exception {
-		memberVO = memberServiceImpl.memberIdCheck(memberVO);
-
-		String msg = "중복된 아이디입니다.";
-
-		if (memberVO == null) {
-			// 아이디 사용가능
-			msg = "사용가능한 아이디입니다.";
-		}
-
-		model.addAttribute("vo", memberVO);
-		model.addAttribute("msg", msg);
-
-		return model;
+	public Model memberIdCheck(String id, Model model) throws Exception {
+		
 	}
 
 	@GetMapping("memberLogin")

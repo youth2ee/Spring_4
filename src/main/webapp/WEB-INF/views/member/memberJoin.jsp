@@ -20,8 +20,8 @@
 			<div class="form-group">
 				<label for="id">Id:</label> 
 				<input type="text" class="form-control" id="id" name="id">
-				
-				<input type="button" class="btn btn-default" id="checkId" value="중복확인">
+				<div id="checkId"></div>
+			
 			</div>
 
 			<div class="form-group">
@@ -73,14 +73,17 @@
 	</div>
 
 
-<script type="text/javascript">
-
-	$("#checkId").click(function() { //callback함수
-		var id = $("#id").val();
-		window.open("./memberIdCheck?id="+id, "", "width=600, height=300, top=200, left=600");
-	});
+	<script type="text/javascript">
+	var id = $("#id").val();
 	
-</script>
+		$("#id").blur(function() {
+			$.get("./memberIdCheck?id="+id, function(data) {
+				alert("오케오케")
+				
+			});
+			
+		});
+	</script>
 
 
 </body>
