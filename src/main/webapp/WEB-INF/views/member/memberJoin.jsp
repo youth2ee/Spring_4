@@ -67,13 +67,24 @@
 				</label>
 			</div>
 
-			<button class="btn btn-default">JOIN</button>
+			<!-- <button class="btn btn-default">JOIN</button> -->
+			<input type="button" class="btn btn-default" value="회원가입" id="join">
 
 		</form>
 	</div>
 
 
 	<script type="text/javascript">
+ 	var idCheck = false;
+ 	//false면 중복된 아이디 가지거나 중복검사를 하지 않았다.
+ 	//true면 중복되지 않은 아이디를 가진다.
+ 	
+ 	$("#join").click(function() {
+		alert(idCheck);
+	});
+ 	//
+
+	
 	
 	$("#id").blur(function() {
 		check();
@@ -93,9 +104,14 @@
 			 if(data == 1){
 				 /* 중복 가능 */
 				 /* $("#checkId").css("color","green"); */
-			     $("#checkId").prop("class","text-success");
-				 $("#checkId").html("사용가능한 아이디입니다.");
 				 
+				 if(id == ""){
+					alert("아이디를 입력하세요") 
+				 } else {
+			    	$("#checkId").prop("class","text-success");
+				 	$("#checkId").html("사용가능한 아이디입니다.");
+				 	idCheck = true;
+				 }
 			 } else {
 				 /* 중복 불가능 */
 				 $('#id').val("");
@@ -103,11 +119,13 @@
 				 $("#checkId").prop("class","text-danger");
 				 $("#checkId").html("사용불가능한 아이디입니다.");
 				 $('#id').focus();
+				 idCheck = false;
 			 }
 		});
 	}
  	
- 	
+ 	//
+
 
 	</script>
 
