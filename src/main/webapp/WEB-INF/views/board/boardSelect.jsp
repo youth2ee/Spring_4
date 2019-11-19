@@ -118,7 +118,7 @@
 				<a href="./${board}Reply?num=${dto.num}">REPLY</a>
 			</c:if>
 			</c:catch>
-			
+
 		</div>
 	</section>
 

@@ -14,7 +14,7 @@ public class BoardQnaDAOTest extends TestAbstractCase {
 	@Inject
 	private BoardQnaDAO boardQnaDAO;
 	
-	@Test
+	//@Test
 	public void test() throws Exception {
 		
 		BoardVO boardVO = new BoardVO();
@@ -25,6 +25,15 @@ public class BoardQnaDAOTest extends TestAbstractCase {
 		
 		assertEquals(1, result);
 		
+	}
+	
+	@Test
+	public void reply() throws Exception {
+		BoardVO boardVO = new BoardVO();
+		boardVO.setNum(384);
+		int result =  boardQnaDAO.boardReplyUpdate(boardVO);
+	
+		assertEquals(1, result);
 	}
 
 }

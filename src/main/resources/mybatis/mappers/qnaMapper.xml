@@ -5,7 +5,8 @@
   
   <mapper namespace="qnaMapper">
 
-	<sql id="bs">
+
+	<sql id="ch">
 		<choose>
 			<when test="kind == 'kT'">
 				where title like '%'||#{search}||'%'
@@ -23,25 +24,31 @@
 
 
 
+	<sql id="ref">
+		select ref from qna where num = #{num}
+	</sql>
 
-	<select id="boardList" parameterType="Pager"
-		resultType="BoardQnaVO">
+	<sql id="step">
+		select step from qna where num = #{num}
+	</sql>
+  
+
+
+
+
+	<select id="boardList" parameterType="Pager" resultType="BoardQnaVO">
 		select * from
 		(select N.*, rownum R from
 		(select * from qna
-
-		<include refid="bs" />
-
+		<include refid="ch" />
 		order by ref desc, step asc) N)
 		where R between #{startRow} and #{lastRow}
 	</select>
 	
-
+	
 	<select id="boardCount" parameterType="Pager" resultType="Integer">
 		select count(num) from qna 
-	
-		<include refid="bs" />
-		
+		<include refid="ch"/>
 	</select>
 	
 	
@@ -66,12 +73,19 @@
   	
   	<insert id="boardReply" parameterType="BoardVO">
   		insert into qna values 
-  		(board_seq.nextval, #{title}, #{writer}, #{contents}, sysdate, 0, #{ref}, #{step}, #{depth})
+  		(board_seq.nextval,  #{title}, #{writer}, #{contents}, sysdate, 0, 
+        (<include refid="ref"/>), 
+        (<include refid="step"/>)+1, 
+        (select depth from qna where num = #{num})+1 
+        )
   	</insert>
   	
   	<update id="boardReplyUpdate" parameterType="BoardVO">
   		update qna set step = step+1
-  		where ref = #{ref} and step > #{step}
+  		where ref = 
+        (<include refid="ref"/>) 
+        and step > 
+        (<include refid="step"/>)
   	</update>
   
   

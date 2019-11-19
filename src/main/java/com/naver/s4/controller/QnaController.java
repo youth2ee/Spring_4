@@ -120,7 +120,7 @@ public class QnaController {
 			mv.setViewName("redirect:./qnaList");
 		} else {
 			mv.addObject("msg", msg);
-			mv.addObject("path", "qna/qnaUpdate");
+			mv.addObject("path", "qna/qnaList");
 			mv.setViewName("common/common_result");
 		}
 		
@@ -130,6 +130,7 @@ public class QnaController {
 	@RequestMapping(value = "qnaReply", method = RequestMethod.GET)
 	public ModelAndView boardReply(int num) throws Exception {
 		ModelAndView mv = new ModelAndView();
+		mv.addObject("board", "qna");
 		mv.addObject("num", num);
 		mv.addObject("board", "qna");
 		mv.setViewName("board/boardReply");
@@ -141,19 +142,21 @@ public class QnaController {
 	@RequestMapping(value = "qnaReply", method = RequestMethod.POST)
 	public ModelAndView boardReply(BoardVO boardVO) throws Exception {
 		int result = boardQnaService.boardReply(boardVO);
-		String msg = "댓글추가 실패";
-		
-		if(result > 0) {
-			msg = "댓글추가 성공";
-		}
 		
 		ModelAndView mv = new ModelAndView();
-		mv.addObject("msg", msg);
-		mv.addObject("path", "./qnaList");
-		mv.setViewName("common/common_result");
-	
+		String msg = "댓글 추가 실패";
+		
+		if(result > 0) {
+			msg = "댓글 추가 성공";
+			mv.setViewName("redirect:./qnaList");
+		} else {
+			mv.addObject("msg", msg);
+			mv.addObject("path", "qna/qnaList");
+			mv.setViewName("common/common_result");
+		}
+		
 		return mv;
-	
+
 	}
 
 }

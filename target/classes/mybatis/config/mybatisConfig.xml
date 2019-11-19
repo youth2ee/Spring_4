@@ -10,5 +10,6 @@
   		<typeAlias type="com.naver.s4.model.BoardQnaVO" alias="BoardQnaVO"/>
   		<typeAlias type="com.naver.s4.util.Pager" alias="Pager"/>
   		<typeAlias type="java.lang.Integer" alias="Integer"/>
+  		<typeAlias type="com.naver.s4.model.MemberVO" alias="MemberVO" />
   	</typeAliases>
   </configuration>

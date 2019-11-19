@@ -5,7 +5,14 @@
   
   <mapper namespace="noticeMapper">
   
-  	<sql id="bs">
+
+  
+  
+	<select id="boardList" parameterType="Pager" resultType="BoardNoticeVO">
+		select * from
+		(select N.*, rownum R from
+		(select * from notice
+		
 		<choose>
 			<when test="kind == 'kT'"><!-- || : 연결연산자  -->
 				where title like '%'||#{search}||'%'
@@ -19,7 +26,7 @@
 				where contents like '%'||#{search}||'%'
 			</otherwise>
 		</choose>
-	</sql>
+	</select>
   
   
   
