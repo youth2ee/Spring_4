@@ -1,11 +1,13 @@
 package com.naver.s4.service;
 
+import javax.servlet.http.HttpSession;
+
 import com.naver.s4.model.MemberVO;
 
 public interface MemberService {
 	
 	//memberJoin
-	public int memberJoin(MemberVO memberVO) throws Exception;
+	public int memberJoin(MemberVO memberVO, HttpSession session) throws Exception;
 	
 	//memberLogin
 	public MemberVO memberLogin(MemberVO memberVO) throws Exception;

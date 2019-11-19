@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.naver.s4.model.MemberVO;
@@ -30,23 +31,30 @@ public class MemberController {
 	}
 
 	@PostMapping(value = "memberJoin")
-	public ModelAndView memberJoin(MemberVO memberVO) throws Exception {
-		int result = memberServiceImpl.memberJoin(memberVO);
-		String msg = "회원가입 실패";
-
+	public ModelAndView memberJoin(MemberVO memberVO, HttpSession session) throws Exception {
+		/*
+		 * System.out.println(memberVO.getFile().getName());
+		 * System.out.println(memberVO.getFile().getOriginalFilename());
+		 * System.out.println(memberVO.getFile().getSize());
+		 */
+		
+	
+		
+		int result = memberServiceImpl.memberJoin(memberVO, session);
+		 
+		//String msg = "회원가입 실패";
+		 
 		ModelAndView mv = new ModelAndView();
-
-		if (result > 0) {
-			msg = "회원가입 성공";
-		}
-
-		mv.addObject("msg", msg);
-		mv.addObject("path", "../");
-		mv.setViewName("common/common_result");
-
+		/*
+		 * if (result > 0) { msg = "회원가입 성공"; }
+		 * 
+		 * mv.addObject("msg", msg); mv.addObject("path", "../");
+		 * mv.setViewName("common/common_result");
+		 */
 		return mv;
 	}
 
+	
 	@GetMapping(value = "memberIdCheck")
 	public void memberIdCheck(String id, Model model, MemberVO memberVO) throws Exception {
 		memberVO.setId(id);

@@ -1,11 +1,16 @@
 package com.naver.s4.service;
 
+import java.io.File;
+import java.util.Calendar;
+
 import javax.inject.Inject;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Service;
 
 import com.naver.s4.dao.MemberDAOImpl;
 import com.naver.s4.model.MemberVO;
+import com.naver.s4.util.FileSaver;
 
 @Service
 public class MemberServiceImpl implements MemberService {
@@ -14,8 +19,20 @@ public class MemberServiceImpl implements MemberService {
 	private MemberDAOImpl memberDAOImpl;
 
 	@Override
-	public int memberJoin(MemberVO memberVO) throws Exception {
-		return memberDAOImpl.memberJoin(memberVO);
+	public int memberJoin(MemberVO memberVO, HttpSession session) throws Exception {
+		//Server의 HDD에 저장
+		// /resources/upload
+		
+		//1. 파일을 저장할 실제 경로
+		String realPath = session.getServletContext().getRealPath("resources/upload/member");
+		
+		FileSaver fileSaver = new FileSaver();
+		fileSaver.Save(realPath, memberVO.getFile());
+		
+		
+		
+		
+		return 0; //memberDAOImpl.memberJoin(memberVO);
 	}
 
 	@Override

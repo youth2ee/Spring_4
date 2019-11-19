@@ -15,7 +15,7 @@
 	<div class="container">
 		<h2>Member Join</h2>
 
-		<form action="./memberJoin" method="post">
+		<form action="./memberJoin" id="form" enctype="multipart/form-data" method="post">
 
 			<div class="form-group">
 				<label for="id">Id:</label> 
@@ -69,6 +69,14 @@
 				</label>
 			</div>
 
+
+			<div class="form-group">
+				<label for="file">File:</label> 
+				<input type="file" class="form-control" id="file" name="file">
+			</div>
+			
+			
+
 			<!-- <button class="btn btn-default">JOIN</button> -->
 			<input type="button" class="btn btn-default" value="회원가입" id="join">
 
@@ -82,7 +90,10 @@
 		//true면 중복되지 않은 아이디를 가진다.
 
 		$("#join").click(function() {
-			alert(idCheck);
+			//if(idCheck){
+				$("#form").submit();
+			//}
+			
 		});
 
 		//
@@ -266,7 +277,6 @@
 				}
 			});
 		}
-		
 		
 		
 	</script>
