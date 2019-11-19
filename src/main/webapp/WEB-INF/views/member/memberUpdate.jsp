@@ -42,17 +42,26 @@
 	 		<div class="form-group">
 				<label for="birth">Birth:</label> 
 				<input type="date" class="form-control" id="birth" name="birth" value="${member.birth}">
-				
-				
 			</div> 
 
 			<div class="form-group">
 				<label for="gender">Gender: </label> 
-					<label class="radio-inline"><input type="radio" name="gender" value="F" id="gender1">F</label> 
-					<label class="radio-inline"><input type="radio" name="gender" value="M" id="gender2">M</label>
+				<label class="radio-inline"><input type="radio" name="gender" value="F" id="gender1">F</label> 
+				<label class="radio-inline"><input type="radio" name="gender" value="M" id="gender2">M</label>
+			</div>
+			
+			<div class="form-group">
+				<label for="file">File:</label> 
+				<input type="file" class="form-control" id="file" name="file">
+			</div>
+			
+			<div>
+				<img style="width: 400px;" alt="" src="../resources/upload/member/${member.filename}"><br>
 			</div>
 
-			<button class="btn btn-default">Update</button>
+			<div style="padding: 15px 0;">
+				<button class="btn btn-default">Update</button>
+			</div>
 
 		</form>
 	</div>
