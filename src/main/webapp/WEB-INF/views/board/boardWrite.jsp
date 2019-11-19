@@ -13,7 +13,7 @@
 	
 	<h1>${board} Write</h1>
 	
-	<form action="./${board}Write" method="post" style="width: 70%; margin: 0 auto;">
+	<form action="./${board}Write" method="post" style="width: 70%; margin: 0 auto;" enctype="multipart/form-data">
 		
 				<div class="form-group">
 					<label for="title">Title:</label> 
@@ -28,6 +28,11 @@
 				<div class="form-group">
 					<label for="contents">Contents:</label>
 					<textarea rows="20" cols="" name="contents" class="form-control" id="contents" placeholder="Enter contents"></textarea>
+				</div>
+
+				<div class="form-group">
+					<label for="file">File:</label>
+					<input type="file" name="file" class="form-control" id="file">
 				</div>
 
 				

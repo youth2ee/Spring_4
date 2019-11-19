@@ -48,6 +48,17 @@
 		insert into notice values (board_seq.nextval,#{title}, #{writer},#{contents}, sysdate, 0)
 	</insert>
 	
+	<!--  -->
+	
+	<insert id="boardWriteFile" parameterType="BoardVO">
+		insert into file_notice VALUES (#{num}, #{filename}, #{originalname})
+	</insert>
+	
+	
+	
+	
+	<!--  -->
+	
 	<delete id="boardDelete" parameterType="BoardVO">
 		delete notice where num = #{num}
 	</delete>

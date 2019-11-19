@@ -3,6 +3,7 @@ package com.naver.s4.controller;
 import java.util.List;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -45,8 +46,8 @@ public class NoticeController {
 	}
 	
 	@RequestMapping(value = "noticeWrite", method = RequestMethod.POST)
-	public ModelAndView boardWrite(BoardVO boardVO) throws Exception {
-		int result = boardNoticeService.boardWrite(boardVO);
+	public ModelAndView boardWrite(BoardVO boardVO, HttpSession session) throws Exception {
+		int result = boardNoticeService.boardWrite(boardVO, session);
 
 		ModelAndView mv = new ModelAndView();
 		String msg = "작성 실패";

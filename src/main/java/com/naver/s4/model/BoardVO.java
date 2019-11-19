@@ -2,6 +2,8 @@ package com.naver.s4.model;
 
 import java.sql.Date;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public class BoardVO {
 	private int num;
 	private String title;
@@ -9,8 +11,31 @@ public class BoardVO {
 	private String contents;
 	private Date reg_date;
 	private int hit;
+	private String filename;
+	private String originalname;
+	private MultipartFile file;
 	
 	
+	
+	public MultipartFile getFile() {
+		return file;
+	}
+	public void setFile(MultipartFile file) {
+		this.file = file;
+	}
+	public String getFilename() {
+		return filename;
+	}
+	public void setFilename(String filename) {
+		this.filename = filename;
+	}
+	public String getOriginalname() {
+		return originalname;
+	}
+	public void setOriginalname(String originalname) {
+		this.originalname = originalname;
+	}
+
 	public int getNum() {
 		return num;
 	}

@@ -37,6 +37,10 @@ public class BoardNoticeDAO implements BoardDAO {
 	public int boardWrite(BoardVO boardVO) throws Exception {
 		return sqlSession.insert(NAMESPACE+"boardWrite", boardVO) ;
 	}
+	
+	public int boardWriteFile(BoardVO boardVO) throws Exception {
+		return sqlSession.insert(NAMESPACE+"boardWriteFile", boardVO);
+	}
 
 	@Override
 	public int boardUpdate(BoardVO boardVO) throws Exception {
