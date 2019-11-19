@@ -46,6 +46,13 @@
 				<label for="gender">Gender: </label> 
 				<input type="text" class="form-control" id="gender" name="gender" value="${member.gender}" readonly="readonly">
 			</div>
+			
+			<div class="form-group">
+				<label for="gender">Gender: </label>
+				<img alt="" src="../resources/upload/member/+${member.filename}">
+			</div>
+			
+			
 
 			<input type="button" id="del" class="btn btn-default" value="회원탈퇴">
 			<input type="button" id="up" class="btn btn-default" value="회원정보 수정">

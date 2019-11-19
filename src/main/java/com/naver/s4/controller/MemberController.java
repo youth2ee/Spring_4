@@ -38,19 +38,19 @@ public class MemberController {
 		 * System.out.println(memberVO.getFile().getSize());
 		 */
 		
-	
-		
 		int result = memberServiceImpl.memberJoin(memberVO, session);
 		 
-		//String msg = "회원가입 실패";
+		String msg = "회원가입 실패";
 		 
 		ModelAndView mv = new ModelAndView();
-		/*
-		 * if (result > 0) { msg = "회원가입 성공"; }
-		 * 
-		 * mv.addObject("msg", msg); mv.addObject("path", "../");
-		 * mv.setViewName("common/common_result");
-		 */
+		
+		
+		if (result > 0) { msg = "회원가입 성공"; }
+		  
+		mv.addObject("msg", msg); 
+		mv.addObject("path", "../");
+		mv.setViewName("common/common_result");
+		
 		return mv;
 	}
 

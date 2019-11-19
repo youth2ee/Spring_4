@@ -23,16 +23,17 @@ public class MemberServiceImpl implements MemberService {
 		//Server의 HDD에 저장
 		// /resources/upload
 		
-		//1. 파일을 저장할 실제 경로
+		//파일을 저장할 실제 경로
 		String realPath = session.getServletContext().getRealPath("resources/upload/member");
 		
 		FileSaver fileSaver = new FileSaver();
-		String fileName = fileSaver.Save(realPath, memberVO.getFile());
+		String filename =  fileSaver.save3(realPath, memberVO.getFile());
+		//String filename = fileSaver.save(realPath, memberVO.getFile());
 		
-		memberVO.setFileName(fileName);
+		memberVO.setFilename(filename);
+		memberVO.setOriginalname(memberVO.getFile().getOriginalFilename());
 		
-		
-		return 0; //memberDAOImpl.memberJoin(memberVO);
+		return memberDAOImpl.memberJoin(memberVO);
 	}
 
 	@Override

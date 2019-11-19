@@ -1,7 +1,9 @@
 package com.naver.s4.util;
 
 import java.io.File;
+import java.io.FileOutputStream;
 import java.util.Calendar;
+import java.util.UUID;
 
 import org.springframework.stereotype.Component;
 import org.springframework.util.FileCopyUtils;
@@ -24,24 +26,62 @@ public class FileSaver {
 		
 		//file.mkdir();
 		//마지막의 폴더만 만든다.
+		
 		//System.out.println(file.exists());
 		//System.out.println(file.isDirectory());
 		
-		//시간으로 파일명 바꾸기 
+		//시간으로 파일명 바꾸기 (중복방지 방법1)
 		Calendar calendar =  Calendar.getInstance();
 		Long name = calendar.getTimeInMillis();
 		
 		String tree = multipartFile.getOriginalFilename();
 		String end =  tree.substring(tree.indexOf("."));
 		String fileName = String.valueOf(name)+end;
-		
 		file = new File(realPath, fileName);
-		FileCopyUtils.copy( multipartFile.getBytes(), file);
+		
+		//save1
+		FileCopyUtils.copy(multipartFile.getBytes(), file);
 		
 		return fileName; 
 	}
 	
 
+	//2. multipartfile : transferTo메서드 사용
+	public String save2(String realPath, MultipartFile multipartFile) throws Exception {
+		File file = new File(realPath);
+		if(!file.exists()) {
+			file.mkdirs();
+		}
+		//자바 클래스 안에 랜덤한 이름을 만들어주는 애들이 있다.(중복방지 방법2)
+		String filename = UUID.randomUUID().toString();
+		filename = filename+"_"+multipartFile.getOriginalFilename();
+		file = new File(realPath, filename);
+		
+		
+		//save2
+		multipartFile.transferTo(file);
+		
+		return filename;
+	}
+	
+	//3. Io Stream 사용
+	public String save3(String realPath, MultipartFile multipartFile) throws Exception  {
+		File file = new File(realPath);
+		if(!file.exists()) {
+			file.mkdirs();
+		}
+		String filename = UUID.randomUUID().toString();
+		filename = filename+"_"+multipartFile.getOriginalFilename();
+		file = new File(realPath, filename);
+		
+		
+		//save3
+		FileOutputStream fo = new FileOutputStream(file);
+		fo.write(multipartFile.getBytes());
+		fo.close();
+		
+		return filename;
+	}
 	
 	
 
