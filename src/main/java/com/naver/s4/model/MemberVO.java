@@ -15,10 +15,16 @@ public class MemberVO {
 	private String gender;
 	private int point;
 	private MultipartFile file;
+	private String fileName;
 	
 	
-	
-	
+
+	public String getFileName() {
+		return fileName;
+	}
+	public void setFileName(String fileName) {
+		this.fileName = fileName;
+	}
 	public MultipartFile getFile() {
 		return file;
 	}

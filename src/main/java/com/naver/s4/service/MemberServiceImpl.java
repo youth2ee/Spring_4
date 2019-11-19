@@ -27,9 +27,9 @@ public class MemberServiceImpl implements MemberService {
 		String realPath = session.getServletContext().getRealPath("resources/upload/member");
 		
 		FileSaver fileSaver = new FileSaver();
-		fileSaver.Save(realPath, memberVO.getFile());
+		String fileName = fileSaver.Save(realPath, memberVO.getFile());
 		
-		
+		memberVO.setFileName(fileName);
 		
 		
 		return 0; //memberDAOImpl.memberJoin(memberVO);

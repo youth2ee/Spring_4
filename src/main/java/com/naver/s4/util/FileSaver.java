@@ -11,7 +11,7 @@ import org.springframework.web.multipart.MultipartFile;
 public class FileSaver {
 	
 	//1. Spring에서 제공하는 fileCopyUtils라는 클래스의 copy메서드를 사용함.
-	public void Save(String realPath, MultipartFile multipartFile) throws Exception {
+	public String Save(String realPath, MultipartFile multipartFile) throws Exception {
 		//realPath 받기
 		File file = new File(realPath);
 		//System.out.println(file.exists());
@@ -32,25 +32,13 @@ public class FileSaver {
 		Long name = calendar.getTimeInMillis();
 		
 		String tree = multipartFile.getOriginalFilename();
-		System.out.println(tree); 
-		
-		System.out.println(tree.indexOf(".")); 
-		
-		System.out.println( tree.substring(tree.indexOf(".")));
-		
 		String end =  tree.substring(tree.indexOf("."));
+		String fileName = String.valueOf(name)+end;
 		
-		/*
-		 * String [] trees = tree.split(".");
-		 * 
-		 * for(int i =0;i<trees.length;i++) { System.out.println(trees[i]); }
-		 */
-		
-		file = new File(realPath, String.valueOf(name)+end);
+		file = new File(realPath, fileName);
 		FileCopyUtils.copy( multipartFile.getBytes(), file);
 		
-
-
+		return fileName; 
 	}
 	
 
