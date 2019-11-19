@@ -27,18 +27,51 @@
 
 				<div class="form-group">
 					<label for="contents">Contents:</label>
-					<textarea rows="20" cols="" name="contents" class="form-control" id="contents" placeholder="Enter contents"></textarea>
+					<textarea rows="10" cols="" name="contents" class="form-control" id="contents" placeholder="Enter contents"></textarea>
 				</div>
 
-				<div class="form-group">
-					<label for="file">File:</label>
-					<input type="file" name="file" class="form-control" id="file">
-				</div>
 
+				<div id="files">
+					<div class="form-group" >
+						<label for="file">File:</label> 
+						<input type="file" name="file" class="form-control file">
+						<input type="button" class="btn btn-danger del" value="del">
+					</div>
+				</div>
 				
+
+		<input type="button" class="btn btn-success" value="ADD FILE" id="add">
+		
 		<button>Write</button>
 	
 	</form>
+	
+	<script type="text/javascript">
+
+	var files = $("#files").html();
+	var count = 0;
+	$("#files").empty();
+	
+
+		$("#files").delegate(".del", "click", function(){
+			alert("add");
+		});
+			 
+			 
+
+		$("#add").click(function() {
+			if (count < 5) {
+				$("#files").append(files);
+				count++;
+			} else {
+				alert("파일추가는 최대 5개까지 가능합니다.")
+			}
+		});
+		
+		
+		
+	</script>
+	
 
 </body>
 </html>

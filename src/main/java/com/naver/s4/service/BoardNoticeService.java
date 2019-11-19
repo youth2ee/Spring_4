@@ -42,7 +42,7 @@ public class BoardNoticeService implements BoardService {
 		String realpath = session.getServletContext().getRealPath("resources/upload/notice");
 		
 		FileSaver fileSaver = new FileSaver();
-		String filename = fileSaver.save(realpath, boardVO.getFile());
+		String filename = fileSaver.save0(realpath, boardVO.getFile());
 		
 		boardVO.setFilename(filename);
 		boardVO.setOriginalname(boardVO.getFile().getOriginalFilename());
