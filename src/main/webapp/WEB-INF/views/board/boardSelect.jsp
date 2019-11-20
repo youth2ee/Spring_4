@@ -110,6 +110,7 @@
 				</tbody>
 			</table>
 
+
 			<a href="./${board}Update?num=${dto.num}">UPDATE</a>
 			<a href="./${board}Delete?num=${dto.num}">DELETE</a>
 			

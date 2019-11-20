@@ -53,27 +53,29 @@ public class BoardNoticeService implements BoardService {
 		NoticeFilesVO noticeFilesVO = new NoticeFilesVO();
 		
 		int result = boardNoticeDAO.boardWrite(boardVO);
-		System.out.println(boardVO.getNum());
+		noticeFilesVO.setNum(boardVO.getNum());
 		
-		/*
-		 * for(MultipartFile files : file) { filename = fileSaver.save0(realpath,
-		 * files); noticeFilesVO.setFname(filename);
-		 * noticeFilesVO.setOname(files.getOriginalFilename());
-		 * 
-		 * noticeFilesDAO.fileWrite(noticeFilesVO); }
-		 * 
-		 * 
-		 * 
-		 * 
-		 * boardVO.setFilename(filename);
-		 * boardVO.setOriginalname(boardVO.getFile().getOriginalFilename());
-		 * 
-		 * System.out.println(filename);
-		 * System.out.println(boardVO.getFile().getOriginalFilename());
-		 * System.out.println(realpath);
-		 * 
-		 * boardNoticeDAO.boardWriteFile(boardVO); boardNoticeDAO.boardWrite(boardVO);
-		 */
+		
+		  for(MultipartFile files : file) { 
+			  filename = fileSaver.save0(realpath,files); 
+			  noticeFilesVO.setFname(filename);
+			  noticeFilesVO.setOname(files.getOriginalFilename());
+		  
+			  result = noticeFilesDAO.fileWrite(noticeFilesVO); 
+		  }
+		  
+		  
+		  
+		 // boardVO.setFilename(filename);
+		 // boardVO.setOriginalname(boardVO.getFile().getOriginalFilename());
+		  
+		 // System.out.println(filename);
+		 // System.out.println(boardVO.getFile().getOriginalFilename());
+		 // System.out.println(realpath);
+		  
+		 // boardNoticeDAO.boardWriteFile(boardVO); 
+	 	 // boardNoticeDAO.boardWrite(boardVO);
+		 
 		
 		return result;
 	}

@@ -66,11 +66,15 @@ public class NoticeController {
 		 
 		 String msg = "작성 실패";
 		  
-		  if(result > 0) { msg = "작성 성공"; 
-		  mv.setViewName("redirect:./noticeList"); }
-		  else { mv.addObject("msg", msg); 
-		  mv.addObject("path", "./noticeList");
-		  mv.setViewName("common/common_result"); }
+		  if(result > 0) { 
+			  msg = "작성 성공"; 
+			  mv.setViewName("redirect:./noticeList"); 
+		  }
+		  else { 
+			  mv.addObject("msg", msg); 
+			  mv.addObject("path", "./noticeList");
+			  mv.setViewName("common/common_result"); 
+		  }
 		 
 		return mv;
 	}

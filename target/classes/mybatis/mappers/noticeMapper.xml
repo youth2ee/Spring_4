@@ -26,9 +26,7 @@
 		select * from
 		(select N.*, rownum R from
 		(select * from notice
-
 		<include refid="bs"/>
-	
 		order by num desc) N)
 		where R between #{startRow} and #{lastRow}
 	</select>
@@ -36,19 +34,17 @@
 
 	<select id="boardCount" parameterType="Pager" resultType="Integer">
 		select count(num) from notice
-
 		<include refid="bs"/>
-		
 	</select>
 	
 	<insert id="boardWrite" parameterType="BoardVO">
-		insert into notice values (board_seq.nextval,#{title}, #{writer},#{contents}, sysdate, 0)
+		
+		<selectKey order="BEFORE" resultType="Integer" keyProperty="num"> 
+			select board_seq.nextval from dual
+		</selectKey>
+		
+		insert into notice values (#{num} ,#{title}, #{writer},#{contents}, sysdate, 0)
 	</insert>
-	
-	<!--  -->
-	
-	
-	
 	
 	<!--  -->
 	
