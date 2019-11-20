@@ -11,7 +11,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.naver.s4.dao.BoardNoticeDAO;
+import com.naver.s4.dao.NoticeFilesDAO;
 import com.naver.s4.model.BoardVO;
+import com.naver.s4.model.NoticeFilesVO;
 import com.naver.s4.util.FileSaver;
 import com.naver.s4.util.Pager;
 
@@ -24,6 +26,9 @@ public class BoardNoticeService implements BoardService {
 	
 	@Inject
 	private FileSaver fileSaver;
+	
+	@Inject
+	private NoticeFilesDAO noticeFilesDAO;
 
 	
 	@Override
@@ -45,22 +50,32 @@ public class BoardNoticeService implements BoardService {
 		String realpath = session.getServletContext().getRealPath("resources/upload/notice");
 		String filename = "";
 		
-		for(MultipartFile files : file) {
-			filename = fileSaver.save0(realpath, files);
-		}
+		NoticeFilesVO noticeFilesVO = new NoticeFilesVO();
 		
-		boardVO.setFilename(filename);
-		boardVO.setOriginalname(boardVO.getFile().getOriginalFilename());
+		int result = boardNoticeDAO.boardWrite(boardVO);
+		System.out.println(boardVO.getNum());
 		
-		System.out.println(filename);
-		System.out.println(boardVO.getFile().getOriginalFilename());
-		System.out.println(realpath);
+		/*
+		 * for(MultipartFile files : file) { filename = fileSaver.save0(realpath,
+		 * files); noticeFilesVO.setFname(filename);
+		 * noticeFilesVO.setOname(files.getOriginalFilename());
+		 * 
+		 * noticeFilesDAO.fileWrite(noticeFilesVO); }
+		 * 
+		 * 
+		 * 
+		 * 
+		 * boardVO.setFilename(filename);
+		 * boardVO.setOriginalname(boardVO.getFile().getOriginalFilename());
+		 * 
+		 * System.out.println(filename);
+		 * System.out.println(boardVO.getFile().getOriginalFilename());
+		 * System.out.println(realpath);
+		 * 
+		 * boardNoticeDAO.boardWriteFile(boardVO); boardNoticeDAO.boardWrite(boardVO);
+		 */
 		
-		boardNoticeDAO.boardWriteFile(boardVO);
-		boardNoticeDAO.boardWrite(boardVO);
-		
-		
-		return 0;
+		return result;
 	}
 
 	@Override

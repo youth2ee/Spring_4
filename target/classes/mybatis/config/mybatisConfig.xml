@@ -5,6 +5,7 @@
   
   <configuration>
   	<typeAliases> 
+  		<typeAlias type="com.naver.s4.model.NoticeFilesVO" alias="NoticeFilesVO"/>
   		<typeAlias type="com.naver.s4.model.BoardVO" alias="BoardVO" />
   		<typeAlias type="com.naver.s4.model.BoardNoticeVO" alias="BoardNoticeVO"/>
   		<typeAlias type="com.naver.s4.model.BoardQnaVO" alias="BoardQnaVO"/>

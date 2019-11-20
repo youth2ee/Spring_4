@@ -59,18 +59,19 @@ public class NoticeController {
 			
 		}
 		
-		//int result = boardNoticeService.boardWrite(boardVO, session);
+		int result = boardNoticeService.boardWrite(boardVO, file ,session);
 
 		 ModelAndView mv = new ModelAndView(); 
 		 
-		 //String msg = "작성 실패";
-		 /* 
-		 * if(result > 0) { msg = "작성 성공"; 
-		 * mv.setViewName("redirect:./noticeList"); }
-		 * else { mv.addObject("msg", msg); 
-		 * mv.addObject("path", "./noticeList");
-		 * mv.setViewName("common/common_result"); }
-		 */
+		 
+		 String msg = "작성 실패";
+		  
+		  if(result > 0) { msg = "작성 성공"; 
+		  mv.setViewName("redirect:./noticeList"); }
+		  else { mv.addObject("msg", msg); 
+		  mv.addObject("path", "./noticeList");
+		  mv.setViewName("common/common_result"); }
+		 
 		return mv;
 	}
 	

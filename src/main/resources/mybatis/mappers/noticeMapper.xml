@@ -49,10 +49,6 @@
 	
 	<!--  -->
 	
-	<insert id="boardWriteFile" parameterType="BoardVO">
-		insert into file_notice VALUES (#{num}, #{filename}, #{originalname})
-	</insert>
-	
 	
 	
 	
