@@ -54,16 +54,14 @@ public class NoticeController {
 		//MultipartFile []로 받으면 file.length / ArrayList<MultipartFile>로 받으면 file.size()
 		//file[i].getOriginalFilename() / file.get(i).getOriginalFilename()
 		
-		for(int i =0; i<file.length ;i++) {
-			System.out.println(file[i].getOriginalFilename());
-			
-		}
+		/*
+		 * for(int i =0; i<file.length ;i++) {
+		 * System.out.println(file[i].getOriginalFilename()); }
+		 */
 		
 		int result = boardNoticeService.boardWrite(boardVO, file ,session);
 
 		 ModelAndView mv = new ModelAndView(); 
-		 
-		 
 		 String msg = "작성 실패";
 		  
 		  if(result > 0) { 
@@ -113,6 +111,7 @@ public class NoticeController {
 		ModelAndView mv = new ModelAndView();
 		BoardVO boardVO = new BoardVO();
 		boardVO.setNum(num);
+		
 		mv.addObject("board", "notice");
 		mv.addObject("dto", boardNoticeService.boardSelect(boardVO));
 		mv.setViewName("board/boardUpdate");

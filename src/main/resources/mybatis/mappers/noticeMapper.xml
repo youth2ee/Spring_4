@@ -38,12 +38,11 @@
 	</select>
 	
 	<insert id="boardWrite" parameterType="BoardVO">
-		
 		<selectKey order="BEFORE" resultType="Integer" keyProperty="num"> 
 			select board_seq.nextval from dual
 		</selectKey>
-		
-		insert into notice values (#{num} ,#{title}, #{writer},#{contents}, sysdate, 0)
+		insert into notice values 
+		(#{num} ,#{title}, #{writer},#{contents}, sysdate, 0)
 	</insert>
 	
 	<!--  -->

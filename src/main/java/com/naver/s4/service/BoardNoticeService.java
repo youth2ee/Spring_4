@@ -12,6 +12,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.naver.s4.dao.BoardNoticeDAO;
 import com.naver.s4.dao.NoticeFilesDAO;
+import com.naver.s4.model.BoardNoticeVO;
 import com.naver.s4.model.BoardVO;
 import com.naver.s4.model.NoticeFilesVO;
 import com.naver.s4.util.FileSaver;
@@ -41,12 +42,12 @@ public class BoardNoticeService implements BoardService {
 
 	@Override
 	public BoardVO boardSelect(BoardVO boardVO) throws Exception {
+		boardVO = boardNoticeDAO.boardSelect(boardVO);
+		BoardNoticeVO boardNoticeVO = (BoardNoticeVO)boardVO;
 		List<NoticeFilesVO> ar = noticeFilesDAO.fileList(boardVO.getNum());
-		BoardVO vo = boardNoticeDAO.boardSelect(boardVO);
+		boardNoticeVO.setFiles(ar);
 		
-		
-		
-		return "";
+		return boardNoticeVO;
 	}
 
 	@Override
@@ -54,6 +55,8 @@ public class BoardNoticeService implements BoardService {
 		
 		String realpath = session.getServletContext().getRealPath("resources/upload/notice");
 		String filename = "";
+		
+		session.setAttribute("realpath", realpath);
 		
 		NoticeFilesVO noticeFilesVO = new NoticeFilesVO();
 		
@@ -68,8 +71,6 @@ public class BoardNoticeService implements BoardService {
 		  
 			  result = noticeFilesDAO.fileWrite(noticeFilesVO); 
 		  }
-		  
-		  
 		  
 		 // boardVO.setFilename(filename);
 		 // boardVO.setOriginalname(boardVO.getFile().getOriginalFilename());

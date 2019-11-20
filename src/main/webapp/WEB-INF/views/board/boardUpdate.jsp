@@ -13,7 +13,7 @@
 	
 	<h1>${board} Update</h1>
 	
-	<form action="./${board}Update" method="post">
+	<form action="./${board}Update" method="post"  style="width: 70%; margin: 0 auto;">
 	
 				<input type="hidden" name="num" value="${dto.num}">
 		
@@ -27,9 +27,29 @@
 					<textarea rows="20" cols="" name="contents" class="form-control" id="contents" placeholder="Enter contents">${dto.contents}</textarea>
 				</div>
 
+				<c:forEach items="${dto.files}" var="file">
+				<div class="form-group">
+					<label for="file">File:</label>
+			
+				<a style="width: 200px;" href="../resources/upload/${board}/${file.fname}">${file.oname}</a>
+			
+					<input type="button" class="btn btn-default" value="수정">
+				</div>				
+				 </c:forEach>
+
+
 				<button>Update</button>
-	
+				
 	</form>
+	
+	<button id="aa">reak</button>
+	
+	<script type="text/javascript">
+	
+
+	
+	</script>
+	
 
 </body>
 </html>

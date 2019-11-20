@@ -7,8 +7,10 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.naver.s4.model.BoardQnaVO;
@@ -47,8 +49,8 @@ public class QnaController {
 	}
 	
 	@RequestMapping(value = "qnaWrite", method = RequestMethod.POST)
-	public ModelAndView boardWrite(BoardVO boardVO, HttpSession session) throws Exception {
-		int result = boardQnaService.boardWrite(boardVO, session);
+	public ModelAndView boardWrite(BoardVO boardVO, HttpSession session, MultipartFile [] file) throws Exception {
+		int result = boardQnaService.boardWrite(boardVO, file, session);
 	
 		ModelAndView mv = new ModelAndView();
 		String msg = "작성 실패";

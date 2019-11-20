@@ -104,15 +104,26 @@
 					</tr>
 
 					<tr class="b3">
-						<td class="b5" colspan="5"
-							style="text-align: left; vertical-align: top; padding: 25px; height: 650px;">${dto.contents}</td>
+						<td class="b5" colspan="5" style="text-align: left; vertical-align: top; padding: 25px; height:300px;">${dto.contents}</td>
 					</tr>
+					
+						<c:forEach items="${dto.files}" var="file">
+					<tr style="background-color: white; border-bottom: 5px rgb(240, 240, 240) solid;">
+						<td colspan="5" style="text-align: left; vertical-align: top; padding: 5px;">
+						<a href="../resources/upload/${board}/${file.fname}">${file.oname}</a>					
+						</td>
+					</tr>
+				        </c:forEach>
+					
 				</tbody>
 			</table>
+			
 
-
-			<a href="./${board}Update?num=${dto.num}">UPDATE</a>
-			<a href="./${board}Delete?num=${dto.num}">DELETE</a>
+			<button class="btn btn-default" id="upd">UPDATE</button>
+			<button class="btn btn-default" id="del">DELETE</button>
+			
+<%-- 			<a href="./${board}Update?num=${dto.num}">UPDATE</a>
+			<a href="./${board}Delete?num=${dto.num}">DELETE</a> --%>
 			
 			<c:catch>
 			<c:if test="${not empty dto.ref}">
@@ -122,6 +133,23 @@
 
 		</div>
 	</section>
+	
+	<script type="text/javascript">
+	
+	$("#upd").click(function() {
+		location.href="./${board}Update?num=${dto.num}";
+	});
+	
+	$("#del").click(function() {
+		location.href="./${board}Delete?num=${dto.num}";
+	});
+	
+	
+	
+	
+	</script>
+	
+	
 
 </body>
 </html>
