@@ -31,14 +31,14 @@
 				</div>
 
 
-				<div id="files">
-					<div class="form-group" >
-						<label for="file">File:</label> 
-						<input type="file" name="file" class="form-control file">
-						<input type="button" class="btn btn-danger del" value="del">
-					</div>
-				</div>
-				
+		<div id="files">
+			<div class="form-group" title="parent">
+				<label for="file">File:</label> 
+				<input type="file" name="file" class="form-control"> 
+				<input type="button" class="btn btn-danger del" value="del">
+			</div>
+		</div>
+
 
 		<input type="button" class="btn btn-success" value="ADD FILE" id="add">
 		
@@ -50,14 +50,24 @@
 
 	var files = $("#files").html();
 	var count = 0;
+	var index = 0; //인덱스번호 사용하기
 	$("#files").empty();
 	
+	
 
-		$("#files").delegate(".del", "click", function(){
+/* 		$("#files").delegate(".del", "click", function(){
 			alert("add");
+		}); */
+		
+		
+		$("#files").on("click", ".del", function() {
+				count--;
+				//$(this).closest("div").remove();
+				//$(this).parent().attr("title");
+				//$(this).parents("div").attr("class");
+				$(this).parents(".form-group").remove();				
 		});
-			 
-			 
+		
 
 		$("#add").click(function() {
 			if (count < 5) {
@@ -68,8 +78,7 @@
 			}
 		});
 		
-		
-		
+
 	</script>
 	
 
