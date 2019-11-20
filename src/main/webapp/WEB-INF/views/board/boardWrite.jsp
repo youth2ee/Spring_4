@@ -34,7 +34,7 @@
 		<div id="files">
 			<div class="form-group" title="parent">
 				<label for="file">File:</label> 
-				<input type="file" name="file" class="form-control"> 
+				<input type="file" class="form-control" name="file"> 
 				<input type="button" class="btn btn-danger del" value="del">
 			</div>
 		</div>

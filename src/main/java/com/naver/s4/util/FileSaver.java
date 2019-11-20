@@ -13,10 +13,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.web.multipart.MultipartFile;
 
-
-
-
-
+@Component
 public class FileSaver {
 	
 	public String save0(String realpath, MultipartFile multipartFile) throws Exception {
@@ -53,7 +50,7 @@ public class FileSaver {
 
 	
 	//1. Spring에서 제공하는 fileCopyUtils라는 클래스의 copy메서드를 사용함.
-	public String Save(String realPath, MultipartFile multipartFile) throws Exception {
+	public String save(String realPath, MultipartFile multipartFile) throws Exception {
 		//realPath 받기
 		File file = new File(realPath);
 		//System.out.println(file.exists());

@@ -22,6 +22,9 @@ public class BoardNoticeService implements BoardService {
 /*	@Qualifier("BoardNoticeDAO")*/
 	private BoardNoticeDAO boardNoticeDAO;
 	
+	@Inject
+	private FileSaver fileSaver;
+
 	
 	@Override
 	public List<BoardVO> boardList(Pager pager) throws Exception {
@@ -37,12 +40,14 @@ public class BoardNoticeService implements BoardService {
 	}
 
 	@Override
-	public int boardWrite(BoardVO boardVO, HttpSession session) throws Exception {
+	public int boardWrite(BoardVO boardVO, MultipartFile [] file, HttpSession session) throws Exception {
 		
 		String realpath = session.getServletContext().getRealPath("resources/upload/notice");
+		String filename = "";
 		
-		FileSaver fileSaver = new FileSaver();
-		String filename = fileSaver.save0(realpath, boardVO.getFile());
+		for(MultipartFile files : file) {
+			filename = fileSaver.save0(realpath, files);
+		}
 		
 		boardVO.setFilename(filename);
 		boardVO.setOriginalname(boardVO.getFile().getOriginalFilename());
@@ -54,7 +59,8 @@ public class BoardNoticeService implements BoardService {
 		boardNoticeDAO.boardWriteFile(boardVO);
 		boardNoticeDAO.boardWrite(boardVO);
 		
-		return 0; 
+		
+		return 0;
 	}
 
 	@Override

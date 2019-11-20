@@ -4,6 +4,8 @@ import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import com.naver.s4.model.BoardVO;
 import com.naver.s4.util.Pager;
 
@@ -16,7 +18,7 @@ public interface BoardService {
 	public BoardVO boardSelect(BoardVO boardVO) throws Exception;
 	
 	//write
-	public int boardWrite(BoardVO boardVO, HttpSession session) throws Exception;
+	public int boardWrite(BoardVO boardVO, MultipartFile [] file, HttpSession session) throws Exception;
 	
 	//update
 	public int boardUpdate(BoardVO boardVO) throws Exception;

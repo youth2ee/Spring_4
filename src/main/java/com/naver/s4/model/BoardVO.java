@@ -13,16 +13,15 @@ public class BoardVO {
 	private int hit;
 	private String filename;
 	private String originalname;
-	private MultipartFile file;
-	
-	
-	
-	public MultipartFile getFile() {
-		return file;
-	}
-	public void setFile(MultipartFile file) {
-		this.file = file;
-	}
+
+	/*
+	 * private MultipartFile file;
+	 * 
+	 * 
+	 * 
+	 * public MultipartFile getFile() { return file; } public void
+	 * setFile(MultipartFile file) { this.file = file; }
+	 */
 	public String getFilename() {
 		return filename;
 	}
