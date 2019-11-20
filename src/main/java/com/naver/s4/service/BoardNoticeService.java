@@ -41,7 +41,12 @@ public class BoardNoticeService implements BoardService {
 
 	@Override
 	public BoardVO boardSelect(BoardVO boardVO) throws Exception {
-		return boardNoticeDAO.boardSelect(boardVO);
+		List<NoticeFilesVO> ar = noticeFilesDAO.fileList(boardVO.getNum());
+		BoardVO vo = boardNoticeDAO.boardSelect(boardVO);
+		
+		
+		
+		return "";
 	}
 
 	@Override
