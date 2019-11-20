@@ -13,7 +13,7 @@
 	
 	<h1>${board} Update</h1>
 	
-	<form action="./${board}Update" method="post"  style="width: 70%; margin: 0 auto;">
+	<form action="./${board}Update" method="post" style="width: 70%; margin: 0 auto;" enctype="multipart/form-data">
 	
 				<input type="hidden" name="num" value="${dto.num}">
 		
@@ -30,9 +30,7 @@
 				<c:forEach items="${dto.files}" var="file">
 				<div class="form-group">
 					<label for="file">File:</label>
-			
-				<a style="width: 200px;" href="../resources/upload/${board}/${file.fname}">${file.oname}</a>
-			
+					<div style="width: 100px; float: left;"><a href="../resources/upload/${board}/${file.fname}">${file.oname}</a></div>
 					<input type="button" class="btn btn-default" value="수정">
 				</div>				
 				 </c:forEach>

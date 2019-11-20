@@ -9,9 +9,10 @@
  		insert into noticefiles values (file_seq.nextval, #{num}, #{fname},#{oname})
  	</insert>
  	
- 	<select id="fileList" parameterType="Integer" resultType="NoticeFilesVO">
+<!--  	<select id="fileList" parameterType="Integer" resultType="NoticeFilesVO">
  		select * from noticefiles where num = #{num} 	
- 	</select>
+ 	</select> -->
+ 	<!-- result map 사용해서 필요없어짐 -->
  	
  
   </mapper>

@@ -11,7 +11,6 @@
 <style type="text/css">
 .div_t {
 	width: 70%;
-	height: 910px;
 	margin: 0 auto;
 	background-color: rgb(240, 240, 240);
 }
@@ -127,7 +126,7 @@
 			
 			<c:catch>
 			<c:if test="${not empty dto.ref}">
-				<a href="./${board}Reply?num=${dto.num}">REPLY</a>
+				<button class="btn btn-default" id="rep">REPLY</button>
 			</c:if>
 			</c:catch>
 
@@ -144,6 +143,9 @@
 		location.href="./${board}Delete?num=${dto.num}";
 	});
 	
+	$("#rep").click(function() {
+		location.href="./${board}Reply?num=${dto.num}";
+	});
 	
 	
 	

@@ -9,9 +9,9 @@
  		insert into qnafiles values (file_seq.nextval, #{num}, #{fname},#{oname})
  	</insert>
  	
- 	<select id="fileList" parameterType="Integer" resultType="QnaFilesVO">
+<!--  	<select id="fileList" parameterType="Integer" resultType="QnaFilesVO">
  		select * from qnafiles where num = #{num} 	
- 	</select>
+ 	</select> -->
  	
  
   </mapper>

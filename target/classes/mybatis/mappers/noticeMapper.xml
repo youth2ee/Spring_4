@@ -51,14 +51,44 @@
 		delete notice where num = #{num}
 	</delete>
 	
-	<select id="boardSelect" parameterType="BoardVO" resultType="BoardNoticeVO">
-		select * from notice where num = #{num}
+	<select id="boardSelect" parameterType="BoardVO" resultMap="boardFile">
+		select A.*, B.fnum, B.fname, B.oname 
+		from notice A full outer join noticefiles B
+		on A.num = B.num	
+		where A.num = #{num}
 	</select>
 	
+  	  	<!-- Result Map -->
+  	<resultMap type="BoardNoticeVO" id="boardFile">
+  		<id property="num" column="num"/>
+  		<result property="title" column="title" />
+  		<result property="writer" column="writer"/>
+  		<result property="contents" column="contents"/>
+  		<result property="reg_date" column="reg_date"/>
+  		<result property="hit" column="hit"/>
+  		
+  		<collection property="files" javaType="java.util.List" ofType="NoticeFilesVO">
+  			<id property="fnum" column="fnum"/>
+  			<result property="fname" column="fname"/>
+			<result property="oname" column="oname"/>  			
+  		</collection>
+  	</resultMap>
+  	
+  	
+  	
+  	
+  	
+  	
+  	
+  	
+  	
+  	
   	<update id="boardUpdate" parameterType="BoardVO">
   		update notice set title = #{title}, contents = #{contents} 		
   		where num = #{num}
   	</update>
+  	
+  	
 	
   
   

@@ -13,8 +13,6 @@ public class BoardVO {
 	private int hit;
 
 	
-	
-
 	/*
 	 * private MultipartFile file;
 	 * 

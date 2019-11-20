@@ -43,11 +43,14 @@ public class BoardNoticeService implements BoardService {
 	@Override
 	public BoardVO boardSelect(BoardVO boardVO) throws Exception {
 		boardVO = boardNoticeDAO.boardSelect(boardVO);
-		BoardNoticeVO boardNoticeVO = (BoardNoticeVO)boardVO;
-		List<NoticeFilesVO> ar = noticeFilesDAO.fileList(boardVO.getNum());
-		boardNoticeVO.setFiles(ar);
+		//BoardNoticeVO boardNoticeVO = (BoardNoticeVO)boardVO;
+		//List<NoticeFilesVO> ar = noticeFilesDAO.fileList(boardVO.getNum());
+		//boardNoticeVO.setFiles(ar);
+		//reselt map이라는 매퍼설정 이후 위가 필요없어짐
 		
-		return boardNoticeVO;
+		//return boardNoticeVO;
+		
+		return boardVO;
 	}
 
 	@Override

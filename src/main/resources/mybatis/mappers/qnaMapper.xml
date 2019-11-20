@@ -64,9 +64,33 @@
 		delete qna where num = #{num}
 	</delete>
   
-  	<select id="boardSelect" parameterType="BoardVO" resultType="BoardQnaVO">
-		select * from qna where num = #{num}
+  	<select id="boardSelect" parameterType="BoardVO" resultMap="boardFile">
+		select A.*,B.fnum, B.fname, B.oname 
+		from qna A full outer join qnafiles B
+		on A.num = B.num
+		where A.num = #{num}
 	</select>
+	
+	<!-- result map -->
+	<resultMap type="BoardQnaVO" id="boardFile">
+		<id property="num" column="num"/>
+		<result property="title" column="title"/>
+		<result property="writer" column="writer"/>
+		<result property="contents" column="contents"/>
+		<result property="reg_date" column="reg_date"/>
+		<result property="hit" column="hit"/>
+		<result property="ref" column="ref"/>
+		
+		<collection property="files" javaType="java.util.List" ofType="QnaFilesVO">
+			<id property="fnum" column="fnum"/>
+			<result property="fname" column="fname"/>
+			<result property="oname" column="oname"/>
+		</collection>
+	</resultMap>
+	
+	
+	
+	
 	
 	<update id="boardUpdate" parameterType="BoardVO">
   		update qna set title = #{title}, contents = #{contents} 		
