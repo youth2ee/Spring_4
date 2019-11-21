@@ -104,7 +104,7 @@
 
 					<tr class="b3">
 						<td class="b5" colspan="5" style="text-align: left; vertical-align: top; padding: 25px; height:300px;">
-						<textarea rows="" cols="">${dto.contents}</textarea>
+						${dto.contents}
 						</td>
 					</tr>
 					
@@ -136,7 +136,12 @@
 	</section>
 	
 	<script type="text/javascript">
+	//문장 나누기 작업
 	
+	
+	
+	
+	//
 	$("#upd").click(function() {
 		location.href="./${board}Update?num=${dto.num}";
 	});

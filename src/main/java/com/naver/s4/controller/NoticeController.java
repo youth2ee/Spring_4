@@ -141,8 +141,13 @@ public class NoticeController {
 	@RequestMapping("noticeSelect")
 	public ModelAndView boardSelect(BoardVO boardVO) throws Exception {
 		ModelAndView mv = new ModelAndView();
+		boardVO = boardNoticeService.boardSelect(boardVO);
+		
+		//위지위그 : what you see is what you get (WYSIWYG)
+		boardVO.setContents(boardVO.getContents().replace("\r\n", "<br>"));
+		
 		mv.addObject("board", "notice");
-		mv.addObject("dto", boardNoticeService.boardSelect(boardVO));
+		mv.addObject("dto", boardVO);
 		mv.setViewName("board/boardSelect");
 		
 		return mv; 
