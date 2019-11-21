@@ -14,5 +14,9 @@
  	</select> -->
  	<!-- result map 사용해서 필요없어짐 -->
  	
+ 	<delete id="fileDelete" parameterType="NoticeFilesVO">
+ 		delete noticefiles where fnum = #{fnum}
+ 	</delete>
+ 
  
   </mapper>

@@ -45,11 +45,11 @@
 		(#{num} ,#{title}, #{writer},#{contents}, sysdate, 0)
 	</insert>
 	
-	<!--  -->
 	
 	<delete id="boardDelete" parameterType="BoardVO">
 		delete notice where num = #{num}
 	</delete>
+	
 	
 	<select id="boardSelect" parameterType="BoardVO" resultMap="boardFile">
 		select A.*, B.fnum, B.fname, B.oname 
@@ -58,7 +58,8 @@
 		where A.num = #{num}
 	</select>
 	
-  	  	<!-- Result Map -->
+	
+  	<!-- Result Map -->
   	<resultMap type="BoardNoticeVO" id="boardFile">
   		<id property="num" column="num"/>
   		<result property="title" column="title" />
@@ -74,15 +75,7 @@
   		</collection>
   	</resultMap>
   	
-  	
-  	
-  	
-  	
-  	
-  	
-  	
-  	
-  	
+
   	<update id="boardUpdate" parameterType="BoardVO">
   		update notice set title = #{title}, contents = #{contents} 		
   		where num = #{num}

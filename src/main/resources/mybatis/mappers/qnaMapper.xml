@@ -65,11 +65,12 @@
 	</delete>
   
   	<select id="boardSelect" parameterType="BoardVO" resultMap="boardFile">
-		select A.*,B.fnum, B.fname, B.oname 
+		select A.*, B.fnum, B.fname, B.oname 
 		from qna A full outer join qnafiles B
 		on A.num = B.num
 		where A.num = #{num}
 	</select>
+
 	
 	<!-- result map -->
 	<resultMap type="BoardQnaVO" id="boardFile">
@@ -81,13 +82,17 @@
 		<result property="hit" column="hit"/>
 		<result property="ref" column="ref"/>
 		
-		<collection property="files" javaType="java.util.List" ofType="QnaFilesVO">
+		<!-- 외부 collection 받기 -->
+		<collection property="files" javaType="java.util.List" ofType="QnaFilesVO" resultMap="filesResult"></collection>	
+	</resultMap>
+	
+	
+	<!-- 외부 collection -->
+	<resultMap type="QnaFilesVO" id="filesResult">
 			<id property="fnum" column="fnum"/>
 			<result property="fname" column="fname"/>
 			<result property="oname" column="oname"/>
-		</collection>
 	</resultMap>
-	
 	
 	
 	

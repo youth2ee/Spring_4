@@ -5,8 +5,9 @@
   
   <mapper namespace="memberMapper">
   
+  
  	<insert id="memberJoin" parameterType="MemberVO">
-		insert into member (id,pw,name,phone,email,birth,gender,filename,originalname)
+		insert into member (id, pw, name, phone, email, birth, gender, filename, originalname)
 		values (#{id}, #{pw}, #{name}, #{phone}, #{email}, #{birth}, #{gender}, #{filename}, #{originalname})
  	</insert>
  	

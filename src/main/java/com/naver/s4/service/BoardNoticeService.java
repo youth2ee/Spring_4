@@ -30,6 +30,12 @@ public class BoardNoticeService implements BoardService {
 	
 	@Inject
 	private NoticeFilesDAO noticeFilesDAO;
+	
+	
+	public int fileDelete(NoticeFilesVO noticeFilesVO) throws Exception {
+		return noticeFilesDAO.fileDelete(noticeFilesVO);
+	}
+	
 
 	
 	@Override
@@ -98,5 +104,6 @@ public class BoardNoticeService implements BoardService {
 	public int boardDelete(BoardVO boardVO) throws Exception {
 		return boardNoticeDAO.boardDelete(boardVO);
 	}
+
 
 }

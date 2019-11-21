@@ -27,24 +27,33 @@
 					<textarea rows="20" cols="" name="contents" class="form-control" id="contents" placeholder="Enter contents">${dto.contents}</textarea>
 				</div>
 
-				<c:forEach items="${dto.files}" var="file">
-				<div class="form-group">
-					<label for="file">File:</label>
-					<div style="width: 100px; float: left;"><a href="../resources/upload/${board}/${file.fname}">${file.oname}</a></div>
-					<input type="button" class="btn btn-default" value="수정">
-				</div>				
-				 </c:forEach>
 
+				<div>
+				<c:forEach items="${dto.files}" var="file">
+					<div class="form-group">
+						<p>${file.oname}<input type="button" id="${file.fnum}" value="del" class="del"></p>
+						
+<%-- 					<div style="width: 100px; float: left;"><label for="file">File:</label></div>
+						<div style="width: 100px; float: left;"><a href="../resources/upload/${board}/${file.fname}">${file.oname}</a></div>
+						<input type="button" class="btn btn-default" value="수정">	 --%>
+					
+					</div>				
+				 </c:forEach>
+				</div>
 
 				<button>Update</button>
 				
 	</form>
 	
-	<button id="aa">reak</button>
-	
 	<script type="text/javascript">
-	
+		$(".del").click(function() {
+			var fnum = $(this).attr("id");
 
+			$.post("./fileDelete", {fnum:fnum}, function(data) {
+				alert(data);			
+			});
+
+		});
 	
 	</script>
 	

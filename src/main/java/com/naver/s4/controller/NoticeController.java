@@ -8,12 +8,14 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.naver.s4.model.BoardVO;
+import com.naver.s4.model.NoticeFilesVO;
 import com.naver.s4.service.BoardNoticeService;
 import com.naver.s4.util.Pager;
 
@@ -23,6 +25,25 @@ public class NoticeController {
 	
 	@Inject
 	private BoardNoticeService boardNoticeService;
+	
+	
+	@PostMapping("fileDelete")
+	public ModelAndView fileDelete(NoticeFilesVO noticeFilesVO) throws Exception {
+		
+		System.out.println("Delete");
+		System.out.println(noticeFilesVO.getFnum());
+		
+		int result = boardNoticeService.fileDelete(noticeFilesVO);
+		
+		ModelAndView mv = new ModelAndView(); 
+		mv.setViewName("common/common_ajaxResult");
+		mv.addObject("result", result);
+		
+		return mv;
+	}
+	
+	
+	
 
 	@RequestMapping("noticeList")
 	public ModelAndView boardList(Pager pager) throws Exception{
