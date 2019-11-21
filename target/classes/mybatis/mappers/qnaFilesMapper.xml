@@ -13,5 +13,14 @@
  		select * from qnafiles where num = #{num} 	
  	</select> -->
  	
+ 	<delete id="fileDelete" parameterType="QnaFilesVO">
+ 		delete qnafiles where fnum = #{fnum}
+ 	</delete>
+ 	
+ 	<select id="fileSelect" resultType="QnaFilesVO" parameterType="QnaFilesVO">
+ 		select * from qnafiles
+ 		where fnum = #{fnum}
+ 	</select>
+ 	
  
   </mapper>
