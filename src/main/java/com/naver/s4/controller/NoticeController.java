@@ -8,12 +8,14 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.naver.s4.model.BoardNoticeVO;
 import com.naver.s4.model.BoardVO;
 import com.naver.s4.model.NoticeFilesVO;
 import com.naver.s4.service.BoardNoticeService;
@@ -25,6 +27,21 @@ public class NoticeController {
 	
 	@Inject
 	private BoardNoticeService boardNoticeService;
+	
+	
+	
+	@GetMapping("fileDown")
+	public ModelAndView fileDown(NoticeFilesVO noticeFilesVO) throws Exception {
+		noticeFilesVO = boardNoticeService.fileSelect(noticeFilesVO);
+		
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("file", noticeFilesVO);
+		mv.addObject("board", "notice");
+		mv.setViewName("fileDown");
+		
+		return mv; 
+	}
+	
 	
 	
 	@PostMapping("fileDelete")
@@ -43,7 +60,7 @@ public class NoticeController {
 	}
 	
 	
-	
+   //
 
 	@RequestMapping("noticeList")
 	public ModelAndView boardList(Pager pager) throws Exception{
@@ -59,6 +76,7 @@ public class NoticeController {
 		return mv;
 	}
 	
+	
 	@RequestMapping(value = "noticeWrite", method = RequestMethod.GET)
 	public ModelAndView boardWrite() throws Exception{
 		ModelAndView mv = new ModelAndView();
@@ -67,6 +85,7 @@ public class NoticeController {
 		
 		return mv;
 	}
+	
 	
 	@RequestMapping(value = "noticeWrite", method = RequestMethod.POST)
 	public ModelAndView boardWrite(BoardVO boardVO, HttpSession session, MultipartFile [] file) throws Exception {
@@ -98,6 +117,7 @@ public class NoticeController {
 		return mv;
 	}
 	
+	
 	@RequestMapping("noticeDelete")
 	public ModelAndView boardDelete(BoardVO boardVO) throws Exception {
 		int result = boardNoticeService.boardDelete(boardVO);
@@ -117,6 +137,7 @@ public class NoticeController {
 		return mv;
 	}
 	
+	
 	@RequestMapping("noticeSelect")
 	public ModelAndView boardSelect(BoardVO boardVO) throws Exception {
 		ModelAndView mv = new ModelAndView();
@@ -127,12 +148,17 @@ public class NoticeController {
 		return mv; 
 	}
 	
+	
 	@RequestMapping(value = "noticeUpdate", method = RequestMethod.GET)
 	public ModelAndView boardUpdate(int num) throws Exception {
 		ModelAndView mv = new ModelAndView();
 		BoardVO boardVO = new BoardVO();
 		boardVO.setNum(num);
 		
+		//BoardNoticeVO boardNoticeVO = (BoardNoticeVO)boardVO;
+
+		//mv.addObject("count", boardNoticeVO.getFiles().size());
+
 		mv.addObject("board", "notice");
 		mv.addObject("dto", boardNoticeService.boardSelect(boardVO));
 		mv.setViewName("board/boardUpdate");
@@ -141,9 +167,10 @@ public class NoticeController {
 	}
 	
 	
+	
 	@RequestMapping(value = "noticeUpdate", method = RequestMethod.POST)
-	public ModelAndView boardUpdate(BoardVO boardVO) throws Exception {
-		int result =  boardNoticeService.boardUpdate(boardVO);
+	public ModelAndView boardUpdate(BoardVO boardVO, MultipartFile [] file, HttpSession session) throws Exception {
+		int result =  boardNoticeService.boardUpdate(boardVO, file, session);
 		
 		ModelAndView mv = new ModelAndView();
 		String msg = "수정 실패";

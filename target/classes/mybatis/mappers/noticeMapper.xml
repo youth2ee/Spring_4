@@ -56,6 +56,7 @@
 		from notice A full outer join noticefiles B
 		on A.num = B.num	
 		where A.num = #{num}
+		order by B.fnum asc
 	</select>
 	
 	

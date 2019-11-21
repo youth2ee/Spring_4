@@ -36,7 +36,14 @@ public class BoardNoticeService implements BoardService {
 		return noticeFilesDAO.fileDelete(noticeFilesVO);
 	}
 	
+	public NoticeFilesVO fileSelect(NoticeFilesVO noticeFilesVO) throws Exception {
+		return noticeFilesDAO.fileSelect(noticeFilesVO);
+	}
+	
+	
 
+	
+	//
 	
 	@Override
 	public List<BoardVO> boardList(Pager pager) throws Exception {
@@ -96,8 +103,38 @@ public class BoardNoticeService implements BoardService {
 	}
 
 	@Override
-	public int boardUpdate(BoardVO boardVO) throws Exception {
-		return boardNoticeDAO.boardUpdate(boardVO);
+	public int boardUpdate(BoardVO boardVO, MultipartFile [] file, HttpSession session) throws Exception {
+		String realpath = session.getServletContext().getRealPath("resources/upload/notice"); 
+		String filename = "";
+		session.setAttribute("realpath", realpath); 
+		
+		int result = boardNoticeDAO.boardUpdate(boardVO); 
+		boardVO = boardNoticeDAO.boardSelect(boardVO);
+		
+		BoardNoticeVO bVO = (BoardNoticeVO)boardVO;
+		
+		System.out.println("원래 :"+ bVO.getFiles().size());
+		System.out.println(file);
+		System.out.println("추가 :"+file.length);
+		
+		NoticeFilesVO noticeFilesVO = new NoticeFilesVO(); 
+		//if(result > 0 && file.length > bVO.getFiles().size()) {
+			noticeFilesVO.setNum(boardVO.getNum());
+			
+			for(MultipartFile files : file) {
+				if(files.getOriginalFilename() != "") {
+				//files.getSize() != 0
+				filename = fileSaver.save0(realpath, files);
+				noticeFilesVO.setFname(filename);
+				noticeFilesVO.setOname(files.getOriginalFilename());
+				
+				result = noticeFilesDAO.fileWrite(noticeFilesVO);
+					}
+				}
+
+		//}
+		
+		return result;
 	}
 
 	@Override

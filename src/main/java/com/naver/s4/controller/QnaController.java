@@ -112,8 +112,8 @@ public class QnaController {
 	}
 	
 	@RequestMapping(value = "qnaUpdate", method = RequestMethod.POST)
-	public ModelAndView boardUpdate(BoardVO boardVO) throws Exception {
-		int result = boardQnaService.boardUpdate(boardVO);
+	public ModelAndView boardUpdate(BoardVO boardVO, MultipartFile [] file, HttpSession session) throws Exception {
+		int result = boardQnaService.boardUpdate(boardVO, file, session);
 		ModelAndView mv = new ModelAndView();
 		String msg = "수정 실패";
 		

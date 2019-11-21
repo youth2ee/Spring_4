@@ -69,7 +69,7 @@
 	<script type="text/javascript">
 	
 	
-	if (${member.gender} = 'F') {
+	if ("${member.gender}" == 'F') {
 		$("#gender1").prop("checked",true);
 	} else {
 		$("#gender2").prop("checked",true);
