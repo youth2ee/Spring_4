@@ -62,6 +62,7 @@ public class NoticeController {
 	}
 	
 
+	
 	@PostMapping("fileDelete")
 	public ModelAndView fileDelete(FilesVO filesVO) throws Exception {
 		

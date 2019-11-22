@@ -57,7 +57,7 @@
 	
 	
 
-/* 		$("#files").delegate(".del", "click", function(){
+	/* 	$("#files").delegate(".del", "click", function(){
 			alert("add");
 		}); */
 		
@@ -128,7 +128,6 @@
 					
 					data = data.trim();
 					data = '../resources/upload/summer/'+data;
-					
 					$(editor).summernote('insertImage', data);		
 				}
 				//실패시
@@ -147,10 +146,11 @@
 		
 		
 		//contents의 값 받기
-/* 		$("#btn").click(function() {
+	/* 	$("#btn").click(function() {
 			//alert($("#contents").val());
 			alert($("#contents").summernote('code'));
 		}); */
+		
 		
 		//contents에 값 넣기
 		//$("#contents").summernote('code','Hello');
