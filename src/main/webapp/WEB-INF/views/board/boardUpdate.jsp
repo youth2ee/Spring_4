@@ -35,9 +35,11 @@
 				<c:forEach items="${dto.files}" var="file">
 					<div class="form-group ff" id="f${file.fnum}">
 						<p>${file.oname}<input type="button" id="${file.fnum}" value="del" class="del_file"></p>		
-<%-- 					<div style="width: 100px; float: left;"><label for="file">File:</label></div>
+						<%-- 					
+						<div style="width: 100px; float: left;"><label for="file">File:</label></div>
 						<div style="width: 100px; float: left;"><a href="../resources/upload/${board}/${file.fname}">${file.oname}</a></div>
-						<input type="button" class="btn btn-default" value="수정">	 --%>
+						<input type="button" class="btn btn-default" value="수정">	 
+						--%>
 					</div>				
 				 </c:forEach>
 				</div>
@@ -108,7 +110,6 @@
 		//summernote
 		// contents : summernote 불러오기
 		$('#contents').summernote({
-			placeholder: 'Enter contents',
 			minHeight: 300,  
 			maxHeight: null,
 			height: 300
@@ -124,9 +125,7 @@
 		var con = "${dto.contents}";
 		$("#contents").summernote('code',con);
 
-		
-		
-	
+
 	</script>
 	
 

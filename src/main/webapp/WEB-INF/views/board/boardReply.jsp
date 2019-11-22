@@ -7,6 +7,7 @@
 <meta charset="UTF-8">
 <title>${board} reply</title>
 <c:import url="../layout/bootStrap.jsp" />
+<c:import url="../layout/summernote.jsp" />
 </head>
 <body>
 	<c:import url="../layout/nav.jsp" />
@@ -29,11 +30,23 @@
 
 				<div class="form-group">
 					<label for="contents">Contents:</label>
-					<textarea rows="20" cols="" name="contents" class="form-control" id="contents" placeholder="Enter contents"></textarea>
+					<textarea rows="20" cols="" name="contents" class="form-control" id="contents" placeholder="Enter contents" name="editordata"></textarea>
 				</div>
 
 		<button>Reply</button>
 	</form>
+	
+<script type="text/javascript">
+	$("#contents").summernote({
+			placeholder: 'Enter reply contents',
+			minHeight: 300,  
+			maxHeight: null,
+			height: 300
+	});
+
+
+
+</script>
 
 </body>
 </html>

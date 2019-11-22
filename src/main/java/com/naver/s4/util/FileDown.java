@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.web.servlet.view.AbstractView;
 
-import com.naver.s4.model.NoticeFilesVO;
+import com.naver.s4.model.FilesVO;
 
 @Component 
 public class FileDown extends AbstractView {
@@ -22,7 +22,7 @@ public class FileDown extends AbstractView {
 	protected void renderMergedOutputModel(Map<String, Object> model, HttpServletRequest request, HttpServletResponse response) throws Exception {
 			System.out.println("FILE DOWN CLASS");	
 			
-			NoticeFilesVO noticeFilesVO = (NoticeFilesVO)model.get("file");
+			FilesVO noticeFilesVO = (FilesVO)model.get("file");
 			//System.out.println(noticeFilesVO.getFname());
 			//System.out.println(noticeFilesVO.getOname());
 			

@@ -1,6 +1,6 @@
 package com.naver.s4.model;
 
-public class NoticeFilesVO {
+public class FilesVO {
 	
 	private int fnum;
 	private int num;

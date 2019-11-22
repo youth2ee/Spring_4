@@ -17,7 +17,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.naver.s4.model.BoardNoticeVO;
 import com.naver.s4.model.BoardVO;
-import com.naver.s4.model.NoticeFilesVO;
+import com.naver.s4.model.FilesVO;
 import com.naver.s4.service.BoardNoticeService;
 import com.naver.s4.util.Pager;
 
@@ -31,7 +31,7 @@ public class NoticeController {
 	
 	
 	@GetMapping("fileDown")
-	public ModelAndView fileDown(NoticeFilesVO noticeFilesVO) throws Exception {
+	public ModelAndView fileDown(FilesVO noticeFilesVO) throws Exception {
 		noticeFilesVO = boardNoticeService.fileSelect(noticeFilesVO);
 		
 		ModelAndView mv = new ModelAndView();
@@ -45,7 +45,7 @@ public class NoticeController {
 	
 	
 	@PostMapping("fileDelete")
-	public ModelAndView fileDelete(NoticeFilesVO noticeFilesVO) throws Exception {
+	public ModelAndView fileDelete(FilesVO noticeFilesVO) throws Exception {
 		
 		System.out.println("Delete");
 		System.out.println(noticeFilesVO.getFnum());
@@ -161,7 +161,6 @@ public class NoticeController {
 		boardVO.setNum(num);
 		
 		//BoardNoticeVO boardNoticeVO = (BoardNoticeVO)boardVO;
-
 		//mv.addObject("count", boardNoticeVO.getFiles().size());
 
 		mv.addObject("board", "notice");
@@ -170,7 +169,6 @@ public class NoticeController {
 		
 		return mv;
 	}
-	
 	
 	
 	@RequestMapping(value = "noticeUpdate", method = RequestMethod.POST)

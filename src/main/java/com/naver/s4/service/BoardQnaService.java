@@ -15,6 +15,7 @@ import com.naver.s4.model.BoardVO;
 import com.naver.s4.model.QnaFilesVO;
 import com.naver.s4.util.FileSaver;
 import com.naver.s4.util.Pager;
+import com.sun.org.apache.regexp.internal.recompile;
 
 @Service
 public class BoardQnaService implements BoardService {
@@ -28,7 +29,19 @@ public class BoardQnaService implements BoardService {
 	@Inject
 	private QnaFilesDAO qnaFilesDAO;
 	
+	//
 	
+	public int fileDelete(QnaFilesVO qnaFilesVO) throws Exception {
+		return qnaFilesDAO.fileDelete(qnaFilesVO);
+	}
+	
+	public QnaFilesVO fileSelect(QnaFilesVO qnaFilesVO) throws Exception {
+		return qnaFilesDAO.fileSelect(qnaFilesVO);
+	}
+	
+	
+	
+	//
 	@Override
 	public List<BoardVO> boardList(Pager pager) throws Exception {
 		pager.makeRow();

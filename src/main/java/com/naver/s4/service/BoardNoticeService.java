@@ -14,7 +14,7 @@ import com.naver.s4.dao.BoardNoticeDAO;
 import com.naver.s4.dao.NoticeFilesDAO;
 import com.naver.s4.model.BoardNoticeVO;
 import com.naver.s4.model.BoardVO;
-import com.naver.s4.model.NoticeFilesVO;
+import com.naver.s4.model.FilesVO;
 import com.naver.s4.util.FileSaver;
 import com.naver.s4.util.Pager;
 
@@ -31,12 +31,13 @@ public class BoardNoticeService implements BoardService {
 	@Inject
 	private NoticeFilesDAO noticeFilesDAO;
 	
+	//
 	
-	public int fileDelete(NoticeFilesVO noticeFilesVO) throws Exception {
+	public int fileDelete(FilesVO noticeFilesVO) throws Exception {
 		return noticeFilesDAO.fileDelete(noticeFilesVO);
 	}
 	
-	public NoticeFilesVO fileSelect(NoticeFilesVO noticeFilesVO) throws Exception {
+	public FilesVO fileSelect(FilesVO noticeFilesVO) throws Exception {
 		return noticeFilesDAO.fileSelect(noticeFilesVO);
 	}
 	
@@ -74,7 +75,7 @@ public class BoardNoticeService implements BoardService {
 		
 		session.setAttribute("realpath", realpath);
 		
-		NoticeFilesVO noticeFilesVO = new NoticeFilesVO();
+		FilesVO noticeFilesVO = new FilesVO();
 		
 		int result = boardNoticeDAO.boardWrite(boardVO);
 		noticeFilesVO.setNum(boardVO.getNum());
@@ -117,7 +118,7 @@ public class BoardNoticeService implements BoardService {
 		System.out.println(file);
 		System.out.println("추가 :"+file.length);
 		
-		NoticeFilesVO noticeFilesVO = new NoticeFilesVO(); 
+		FilesVO noticeFilesVO = new FilesVO(); 
 		//if(result > 0 && file.length > bVO.getFiles().size()) {
 			noticeFilesVO.setNum(boardVO.getNum());
 			
