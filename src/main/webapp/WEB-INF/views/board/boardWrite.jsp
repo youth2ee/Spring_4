@@ -7,6 +7,7 @@
 <meta charset="UTF-8">
 <title>${board} write</title>
 <c:import url="../layout/bootStrap.jsp" />
+<c:import url="../layout/summernote.jsp" />
 </head>
 <body>
 	<c:import url="../layout/nav.jsp" />
@@ -27,7 +28,7 @@
 
 				<div class="form-group">
 					<label for="contents">Contents:</label>
-					<textarea rows="10" cols="" name="contents" class="form-control" id="contents" placeholder="Enter contents"></textarea>
+					<textarea rows="10" cols="" name="contents" class="form-control" placeholder="Enter contents" id="contents" name="editordata"></textarea>
 				</div>
 
 
@@ -43,6 +44,7 @@
 		<input type="button" class="btn btn-success" value="ADD FILE" id="add">
 		
 		<button>Write</button>
+		<!-- <input type="button" id="btn" value="test"> -->
 	
 	</form>
 	
@@ -78,6 +80,23 @@
 			}
 		});
 		
+		
+		// contents : summernote 불러오기
+		$('#contents').summernote({
+			placeholder: 'Enter contents',
+			minHeight: 300,  
+			maxHeight: null,
+			height: 300
+		});
+		
+		//contents의 값 받기
+/* 		$("#btn").click(function() {
+			//alert($("#contents").val());
+			alert($("#contents").summernote('code'));
+		}); */
+		
+		//contents에 값 넣기
+		//$("#contents").summernote('code','Hello');
 
 	</script>
 	

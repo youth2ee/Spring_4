@@ -8,6 +8,7 @@
 <meta charset="UTF-8">
 <title>${board} update</title>
 <c:import url="../layout/bootStrap.jsp" />
+<c:import url="../layout/summernote.jsp" />
 </head>
 <body>
 <c:import url="../layout/nav.jsp" />
@@ -25,7 +26,8 @@
 
 				<div class="form-group">
 					<label for="contents">Contents:</label>
-					<textarea rows="20" cols="" name="contents" class="form-control" id="contents" placeholder="Enter contents">${dto.contents}</textarea>
+					<textarea rows="20" cols="" name="contents" class="form-control" id="contents" name="editordata"></textarea>
+				
 				</div>
 
 
@@ -62,8 +64,7 @@
 		//var count = ${count};
 		//var count = $(".ff").length;
 		var count = ${fn:length(dto.files)};
-		
-		
+
 		//alert(count);
 		
 	
@@ -104,6 +105,25 @@
 			//$(this).parents(".form-group").remove();				
 		});
 		
+		//summernote
+		// contents : summernote 불러오기
+		$('#contents').summernote({
+			placeholder: 'Enter contents',
+			minHeight: 300,  
+			maxHeight: null,
+			height: 300
+		});
+		
+		//contents의 값 받기
+/* 		$("#btn").click(function() {
+			//alert($("#contents").val());
+			alert($("#contents").summernote('code'));
+		}); */
+		
+		//contents에 값 넣기
+		var con = "${dto.contents}";
+		$("#contents").summernote('code',con);
+
 		
 		
 	

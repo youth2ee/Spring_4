@@ -5,6 +5,7 @@
 <head>
 	<title>Home</title>
 	<c:import url="./layout/bootStrap.jsp" />
+	<c:import url="./layout/summernote.jsp" />
 </head>
 
 <body>
@@ -15,7 +16,12 @@
 		<P>The time on the server is ${serverTime}.</P>
 	</div>
 	
-
+	<div id="index" >
+	</div>
+	
+	<script type="text/javascript">
+		$('#index').summernote();
+	</script>
 
 </body>
 </html>
