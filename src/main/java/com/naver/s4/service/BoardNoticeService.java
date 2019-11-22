@@ -31,8 +31,19 @@ public class BoardNoticeService implements BoardService {
 	@Inject
 	private NoticeFilesDAO noticeFilesDAO;
 	
-	//
 	
+	//summer 
+	public String summerFile(MultipartFile file, HttpSession session) throws Exception {
+		
+		String realpath = session.getServletContext().getRealPath("resources/upload/summer");
+		
+		return fileSaver.save0(realpath, file);
+	}
+	
+	
+	
+	
+	//
 	public int fileDelete(FilesVO noticeFilesVO) throws Exception {
 		return noticeFilesDAO.fileDelete(noticeFilesVO);
 	}
@@ -81,13 +92,15 @@ public class BoardNoticeService implements BoardService {
 		noticeFilesVO.setNum(boardVO.getNum());
 		
 		
-		  for(MultipartFile files : file) { 
-			  filename = fileSaver.save0(realpath,files); 
-			  noticeFilesVO.setFname(filename);
-			  noticeFilesVO.setOname(files.getOriginalFilename());
-		  
-			  result = noticeFilesDAO.fileWrite(noticeFilesVO); 
-		  }
+		for(MultipartFile files : file) { 
+			if(files.getOriginalFilename() != "") {
+				filename = fileSaver.save0(realpath,files); 
+				noticeFilesVO.setFname(filename);
+				noticeFilesVO.setOname(files.getOriginalFilename());
+
+				result = noticeFilesDAO.fileWrite(noticeFilesVO); 
+			}
+		}
 		  
 		 // boardVO.setFilename(filename);
 		 // boardVO.setOriginalname(boardVO.getFile().getOriginalFilename());
@@ -119,22 +132,19 @@ public class BoardNoticeService implements BoardService {
 		System.out.println("추가 :"+file.length);
 		
 		FilesVO noticeFilesVO = new FilesVO(); 
-		//if(result > 0 && file.length > bVO.getFiles().size()) {
-			noticeFilesVO.setNum(boardVO.getNum());
+		noticeFilesVO.setNum(boardVO.getNum());
 			
 			for(MultipartFile files : file) {
 				if(files.getOriginalFilename() != "") {
-				//files.getSize() != 0
-				filename = fileSaver.save0(realpath, files);
-				noticeFilesVO.setFname(filename);
-				noticeFilesVO.setOname(files.getOriginalFilename());
-				
-				result = noticeFilesDAO.fileWrite(noticeFilesVO);
-					}
-				}
+					//files.getSize() != 0
+					filename = fileSaver.save0(realpath, files);
+					noticeFilesVO.setFname(filename);
+					noticeFilesVO.setOname(files.getOriginalFilename());
 
-		//}
-		
+					result = noticeFilesDAO.fileWrite(noticeFilesVO);
+				}
+			}
+
 		return result;
 	}
 

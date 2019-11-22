@@ -17,6 +17,7 @@ import org.springframework.web.multipart.MultipartFile;
 public class FileSaver {
 	
 	public String save0(String realpath, MultipartFile multipartFile) throws Exception {
+		System.out.println(realpath);
 		File file = new File(realpath);
 		
 		if(!file.exists()) {

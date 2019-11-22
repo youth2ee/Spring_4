@@ -86,8 +86,65 @@
 			placeholder: 'Enter contents',
 			minHeight: 300,  
 			maxHeight: null,
-			height: 300
-		});
+			height: 300,
+			
+			//contents에서 summernote로 등록한 이미지 받기
+			// onImageUpload callback
+			callbacks : {
+				onImageUpload : function(files, editor) {
+					uploadFile(files[0], this); //함수호출
+				},//upload
+				
+				onMediaDelete : function(files, editor) {
+					deleteFile(files[0],this);
+				}//delete
+				
+			}//callback
+		});//summernote
+		
+		function uploadFile(file, editor) {
+			//매개변수받을 때 함수는 데이터타입 안쓴다.
+			
+			var formData = new FormData();
+			formData.append('file', file);
+			
+			$.ajax({
+				//데이터를 파라미터로 보낸다.
+				data : formData,
+				
+				//name : value
+				type : "POST",
+				url : "./summerFile",
+				enctype : "multipart/form-data",
+				contentType : false,
+				cache : false,
+				processData : false,
+				
+				
+				//응답을 받는다.
+				//성공시
+				success : function(data) {
+					//console.log(data);
+					
+					data = data.trim();
+					data = '../resources/upload/summer/'+data;
+					
+					$(editor).summernote('insertImage', data);		
+				}
+				//실패시
+				/* error : function() {} */
+			});
+			
+			//alert("hi");
+		}//upload : fun
+		
+		
+		function deleteFile(file, editor) {
+			console.log(file);
+		}//delete : fun
+		
+		
+		
 		
 		//contents의 값 받기
 /* 		$("#btn").click(function() {
@@ -97,6 +154,8 @@
 		
 		//contents에 값 넣기
 		//$("#contents").summernote('code','Hello');
+		
+		
 
 	</script>
 	

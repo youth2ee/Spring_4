@@ -19,6 +19,7 @@ import com.naver.s4.model.BoardNoticeVO;
 import com.naver.s4.model.BoardVO;
 import com.naver.s4.model.FilesVO;
 import com.naver.s4.service.BoardNoticeService;
+import com.naver.s4.util.FileSaver;
 import com.naver.s4.util.Pager;
 
 @Controller
@@ -27,9 +28,27 @@ public class NoticeController {
 	
 	@Inject
 	private BoardNoticeService boardNoticeService;
-	//
 	
 	
+	
+	
+	//summer file
+	@PostMapping("summerFile")
+	public ModelAndView summerFile(MultipartFile file, HttpSession session) throws Exception {
+		//System.out.println(file.getOriginalFilename());	
+		
+		String filename =  boardNoticeService.summerFile(file, session);
+		
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("common/common_ajaxResult");
+		mv.addObject("result", filename);
+		
+		return mv;
+	}
+	
+	
+	
+	//file 
 	@GetMapping("fileDown")
 	public ModelAndView fileDown(FilesVO filesVO) throws Exception {
 		filesVO = boardNoticeService.fileSelect(filesVO);
@@ -42,8 +61,7 @@ public class NoticeController {
 		return mv; 
 	}
 	
-	
-	
+
 	@PostMapping("fileDelete")
 	public ModelAndView fileDelete(FilesVO filesVO) throws Exception {
 		
@@ -60,8 +78,8 @@ public class NoticeController {
 	}
 	
 	
-   //
-
+	
+   //notice
 	@RequestMapping("noticeList")
 	public ModelAndView boardList(Pager pager) throws Exception{
 		List<BoardVO> ar = boardNoticeService.boardList(pager);
