@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.naver.s4.model.FilesVO;
 import com.naver.s4.model.MemberVO;
 import com.naver.s4.service.MemberServiceImpl;
 

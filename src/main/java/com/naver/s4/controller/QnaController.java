@@ -8,6 +8,8 @@ import javax.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
@@ -15,6 +17,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.naver.s4.model.BoardQnaVO;
 import com.naver.s4.model.BoardVO;
+import com.naver.s4.model.FilesVO;
 import com.naver.s4.service.BoardQnaService;
 import com.naver.s4.util.Pager;
 
@@ -24,7 +27,39 @@ public class QnaController {
 
 	@Inject
 	private BoardQnaService boardQnaService;
+	//
 	
+	@GetMapping("fileDown")
+	public ModelAndView fileDown(FilesVO filesVO) throws Exception  {
+		filesVO = boardQnaService.fileSelect(filesVO);
+		
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("file", filesVO);
+		mv.addObject("board", "qna");
+		mv.setViewName("fileDown");
+		
+		return mv;
+	}
+	
+	
+	
+	
+	@PostMapping("fileDelete")
+	public ModelAndView fileDelete(FilesVO filesVO) throws Exception {
+		
+		int result = boardQnaService.fileDelete(filesVO);
+		
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("common/common_ajaxResult");
+		mv.addObject("result", result);
+		
+		return mv;
+		
+	}
+
+	
+	
+	//
 	@RequestMapping("qnaList")
 	public ModelAndView boardList(Pager pager) throws Exception {
 		List<BoardVO> ar =  boardQnaService.boardList(pager);

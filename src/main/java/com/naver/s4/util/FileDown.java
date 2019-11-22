@@ -22,7 +22,7 @@ public class FileDown extends AbstractView {
 	protected void renderMergedOutputModel(Map<String, Object> model, HttpServletRequest request, HttpServletResponse response) throws Exception {
 			System.out.println("FILE DOWN CLASS");	
 			
-			FilesVO noticeFilesVO = (FilesVO)model.get("file");
+			FilesVO filesVO = (FilesVO)model.get("file");
 			//System.out.println(noticeFilesVO.getFname());
 			//System.out.println(noticeFilesVO.getOname());
 			
@@ -32,7 +32,7 @@ public class FileDown extends AbstractView {
 			String realpath = request.getSession().getServletContext().getRealPath("resources/upload/"+board);
 			//System.out.println(realpath);
 			
-			File file = new File(realpath, noticeFilesVO.getFname());
+			File file = new File(realpath, filesVO.getFname());
 			
 			//파일명이 한글일 경우를 대비해 인코딩 : 한글처리
 			response.setCharacterEncoding("UTF-8");
@@ -41,7 +41,7 @@ public class FileDown extends AbstractView {
 			response.setContentLength((int)file.length());
 			
 			//다운로드시에 파일이름을 인코딩
-			String filename = URLEncoder.encode(noticeFilesVO.getOname(), "UTF-8");
+			String filename = URLEncoder.encode(filesVO.getOname(), "UTF-8");
 			
 			//나머지 헤더를 설정
 			response.setHeader("Content-disposition", "attachment;filename=\""+filename+"\"");

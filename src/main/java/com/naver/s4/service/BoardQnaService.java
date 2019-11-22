@@ -12,7 +12,7 @@ import com.naver.s4.dao.BoardQnaDAO;
 import com.naver.s4.dao.QnaFilesDAO;
 import com.naver.s4.model.BoardQnaVO;
 import com.naver.s4.model.BoardVO;
-import com.naver.s4.model.QnaFilesVO;
+import com.naver.s4.model.FilesVO;
 import com.naver.s4.util.FileSaver;
 import com.naver.s4.util.Pager;
 import com.sun.org.apache.regexp.internal.recompile;
@@ -31,12 +31,12 @@ public class BoardQnaService implements BoardService {
 	
 	//
 	
-	public int fileDelete(QnaFilesVO qnaFilesVO) throws Exception {
-		return qnaFilesDAO.fileDelete(qnaFilesVO);
+	public int fileDelete(FilesVO filesVO) throws Exception {
+		return qnaFilesDAO.fileDelete(filesVO);
 	}
 	
-	public QnaFilesVO fileSelect(QnaFilesVO qnaFilesVO) throws Exception {
-		return qnaFilesDAO.fileSelect(qnaFilesVO);
+	public FilesVO fileSelect(FilesVO filesVO) throws Exception {
+		return qnaFilesDAO.fileSelect(filesVO);
 	}
 	
 	
@@ -69,17 +69,17 @@ public class BoardQnaService implements BoardService {
 		String realpath = session.getServletContext().getRealPath("resources/upload/qna");
 		String filename = "";
 		
-		QnaFilesVO qnaFilesVO = new QnaFilesVO();
+		FilesVO filesVO = new FilesVO();
 		
 		int result = boardQnaDAO.boardWrite(boardVO);
-		qnaFilesVO.setNum(boardVO.getNum());
+		filesVO.setNum(boardVO.getNum());
 
 		for(MultipartFile files : file) {
 			filename = fileSaver.save0(realpath, files);
-			qnaFilesVO.setFname(filename);
-			qnaFilesVO.setOname(files.getOriginalFilename());
+			filesVO.setFname(filename);
+			filesVO.setOname(files.getOriginalFilename());
 			
-			result = qnaFilesDAO.fileWrite(qnaFilesVO);
+			result = qnaFilesDAO.fileWrite(filesVO);
 		}
 		
 		return result;

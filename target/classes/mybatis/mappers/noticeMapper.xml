@@ -69,7 +69,7 @@
   		<result property="reg_date" column="reg_date"/>
   		<result property="hit" column="hit"/>
   		
-  		<collection property="files" javaType="java.util.List" ofType="NoticeFilesVO">
+  		<collection property="files" javaType="java.util.List" ofType="FilesVO">
   			<id property="fnum" column="fnum"/>
   			<result property="fname" column="fname"/>
 			<result property="oname" column="oname"/>  			

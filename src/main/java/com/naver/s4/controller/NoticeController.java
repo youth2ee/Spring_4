@@ -27,15 +27,15 @@ public class NoticeController {
 	
 	@Inject
 	private BoardNoticeService boardNoticeService;
-	
+	//
 	
 	
 	@GetMapping("fileDown")
-	public ModelAndView fileDown(FilesVO noticeFilesVO) throws Exception {
-		noticeFilesVO = boardNoticeService.fileSelect(noticeFilesVO);
+	public ModelAndView fileDown(FilesVO filesVO) throws Exception {
+		filesVO = boardNoticeService.fileSelect(filesVO);
 		
 		ModelAndView mv = new ModelAndView();
-		mv.addObject("file", noticeFilesVO);
+		mv.addObject("file", filesVO);
 		mv.addObject("board", "notice");
 		mv.setViewName("fileDown");
 		
@@ -45,12 +45,12 @@ public class NoticeController {
 	
 	
 	@PostMapping("fileDelete")
-	public ModelAndView fileDelete(FilesVO noticeFilesVO) throws Exception {
+	public ModelAndView fileDelete(FilesVO filesVO) throws Exception {
 		
 		System.out.println("Delete");
-		System.out.println(noticeFilesVO.getFnum());
+		System.out.println(filesVO.getFnum());
 		
-		int result = boardNoticeService.fileDelete(noticeFilesVO);
+		int result = boardNoticeService.fileDelete(filesVO);
 		
 		ModelAndView mv = new ModelAndView(); 
 		mv.setViewName("common/common_ajaxResult");

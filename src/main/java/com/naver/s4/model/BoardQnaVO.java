@@ -6,7 +6,7 @@ public class BoardQnaVO extends BoardVO {
 	private int ref;
 	private int step;
 	private int depth;
-	private List<QnaFilesVO> files;
+	private List<FilesVO> files;
 	
 	public int getRef() {
 		return ref;
@@ -26,10 +26,10 @@ public class BoardQnaVO extends BoardVO {
 	public void setDepth(int depth) {
 		this.depth = depth;
 	}
-	public List<QnaFilesVO> getFiles() {
+	public List<FilesVO> getFiles() {
 		return files;
 	}
-	public void setFiles(List<QnaFilesVO> files) {
+	public void setFiles(List<FilesVO> files) {
 		this.files = files;
 	}
 

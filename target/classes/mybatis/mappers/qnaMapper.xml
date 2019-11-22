@@ -83,12 +83,12 @@
 		<result property="ref" column="ref"/>
 		
 		<!-- 외부 collection 받기 -->
-		<collection property="files" javaType="java.util.List" ofType="QnaFilesVO" resultMap="filesResult"></collection>	
+		<collection property="files" javaType="java.util.List" ofType="FilesVO" resultMap="filesResult"></collection>	
 	</resultMap>
 	
 	
 	<!-- 외부 collection -->
-	<resultMap type="QnaFilesVO" id="filesResult">
+	<resultMap type="FilesVO" id="filesResult">
 			<id property="fnum" column="fnum"/>
 			<result property="fname" column="fname"/>
 			<result property="oname" column="oname"/>

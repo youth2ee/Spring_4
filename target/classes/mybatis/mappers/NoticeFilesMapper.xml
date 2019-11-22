@@ -5,7 +5,7 @@
   
   <mapper namespace="noticeFilesMapper">
   
- 	<insert id="fileWrite" parameterType="NoticeFilesVO">
+ 	<insert id="fileWrite" parameterType="FilesVO">
  		insert into noticefiles values (file_seq.nextval, #{num}, #{fname},#{oname})
  	</insert>
  	
@@ -14,11 +14,11 @@
  	</select> -->
  	<!-- result map 사용해서 필요없어짐 -->
  	
- 	<delete id="fileDelete" parameterType="NoticeFilesVO">
+ 	<delete id="fileDelete" parameterType="FilesVO">
  		delete noticefiles where fnum = #{fnum}
  	</delete>
  
-	<select id="fileSelect" resultType="NoticeFilesVO" parameterType="NoticeFilesVO">
+	<select id="fileSelect" resultType="FilesVO" parameterType="FilesVO">
 		select * from noticefiles 
 		where fnum = #{fnum} 
 	</select>
