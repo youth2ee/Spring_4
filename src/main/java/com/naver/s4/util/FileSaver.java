@@ -16,6 +16,23 @@ import org.springframework.web.multipart.MultipartFile;
 @Component
 public class FileSaver {
 	
+	//file Delete
+	public boolean fileDelete(String realpath, String filename) throws Exception {
+		File file = new File(realpath, filename);
+		
+		boolean check = false;
+		
+		if(file.exists()) {
+			check = file.delete();
+		}		
+		
+		return check;
+	}
+	
+	
+	
+	/////
+	
 	public String save0(String realpath, MultipartFile multipartFile) throws Exception {
 		System.out.println(realpath);
 		File file = new File(realpath);

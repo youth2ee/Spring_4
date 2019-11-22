@@ -133,13 +133,30 @@
 				//실패시
 				/* error : function() {} */
 			});
-			
 			//alert("hi");
 		}//upload : fun
 		
 		
 		function deleteFile(file, editor) {
-			console.log(file);
+			//console.log(file);
+			var filename = $(file).attr("src");
+			//console.log(filename);
+			//console.log(filename.substring(filename.lastIndexOf("/")+1));
+			filename = filename.substring(filename.lastIndexOf("/")+1);
+			
+			$.ajax({   
+				type : "POST",
+				url : "summerFileDelete",
+				data : {
+					file : filename
+				},
+				
+				success : function(data) {
+					console.log(data);
+				}
+			});
+			
+				
 		}//delete : fun
 		
 		

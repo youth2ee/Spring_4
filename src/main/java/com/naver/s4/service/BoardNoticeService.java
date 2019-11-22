@@ -34,12 +34,14 @@ public class BoardNoticeService implements BoardService {
 	
 	//summer 
 	public String summerFile(MultipartFile file, HttpSession session) throws Exception {
-		
 		String realpath = session.getServletContext().getRealPath("resources/upload/summer");
-		
 		return fileSaver.save0(realpath, file);
 	}
 	
+	public boolean summerFileDelete(String file, HttpSession session) throws Exception {
+		String realpath = session.getServletContext().getRealPath("resources/upload/summer");
+		return fileSaver.fileDelete(realpath, file);
+	}
 	
 	
 	
