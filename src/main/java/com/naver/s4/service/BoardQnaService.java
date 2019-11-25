@@ -22,10 +22,8 @@ public class BoardQnaService implements BoardService {
 	
 	@Inject
 	private BoardQnaDAO boardQnaDAO;
-	
 	@Inject
 	private FileSaver fileSaver;
-
 	@Inject
 	private QnaFilesDAO qnaFilesDAO;
 	

@@ -1,12 +1,10 @@
 package com.naver.s4.service;
 
-import java.lang.reflect.Member;
 import java.util.List;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
 
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -24,12 +22,11 @@ public class BoardNoticeService implements BoardService {
 	@Inject
 /*	@Qualifier("BoardNoticeDAO")*/
 	private BoardNoticeDAO boardNoticeDAO;
-	
 	@Inject
 	private FileSaver fileSaver;
-	
 	@Inject
 	private NoticeFilesDAO noticeFilesDAO;
+	
 	
 	
 	//summer 
@@ -81,8 +78,7 @@ public class BoardNoticeService implements BoardService {
 	}
 
 	@Override
-	public int boardWrite(BoardVO boardVO, MultipartFile [] file, HttpSession session) throws Exception {
-		
+	public int boardWrite(BoardVO boardVO, MultipartFile [] file, HttpSession session) throws Exception {		
 		String realpath = session.getServletContext().getRealPath("resources/upload/notice");
 		String filename = "";
 		
