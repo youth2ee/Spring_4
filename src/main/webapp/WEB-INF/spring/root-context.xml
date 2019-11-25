@@ -36,28 +36,13 @@
 		
 		<!-- transaction Manager 설정 -->
 		<bean class="org.springframework.jdbc.datasource.DataSourceTransactionManager" id="txManager">
-			<property name="dataSource" ref="dataSource"></property>
+			<property name="dataSource" ref="dataSource" />
 		</bean>
 		
 		
-		<!-- transaction Advice 설정 -->
-		<tx:advice id="txAdvice" transaction-manager="txManager">
-			<tx:attributes>
-				<tx:method name="*" rollback-for="Exception"/>
-			</tx:attributes>
-		</tx:advice>
-		
-		
-		<aop:config>
-				<aop:pointcut expression="execution(* com.naver.s4.service.*.*(..))" id="reqireTx"/>
-				<aop:advisor advice-ref="txAdvice" pointcut-ref="reqireTx"/>
-		</aop:config>
-		
+		<!-- annotation 연결  -->
+		<tx:annotation-driven/>
 			
 
-
-		
-		
-		
 		
 </beans>
