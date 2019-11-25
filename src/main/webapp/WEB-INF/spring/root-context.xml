@@ -39,27 +39,9 @@
 
 
 
-
 	<!-- AOP -->
-	<!-- Advice -->
-	<bean class="com.naver.s4.transfer.Card" id="card" />
+	<aop:aspectj-autoproxy/>	
 
-	<!-- Aop -->
-	<aop:config> 
-		<aop:aspect id="cardAspect" ref="card">
-				<aop:pointcut expression="execution( * com.naver.s4.transfer.Transfer.get*(String))" id="trans"/>
-				<aop:around method="cardCheck" pointcut-ref="trans"/>
-		</aop:aspect>
-		
-		<aop:aspect id="cashAspect" ref="card">
-				<aop:after method="cash" pointcut="execution( * com.naver.s4.transfer.Transfer.taxi())" />
-		</aop:aspect>
-		
-	</aop:config>
-
-	
-		
-		
 		
 		
 </beans>

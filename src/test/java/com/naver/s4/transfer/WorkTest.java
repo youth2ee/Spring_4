@@ -1,7 +1,5 @@
 package com.naver.s4.transfer;
 
-import static org.junit.Assert.*;
-
 import javax.inject.Inject;
 
 import org.junit.Test;
@@ -14,12 +12,12 @@ public class WorkTest extends TestAbstractCase {
 	private Work work;
 	
 	
-	@Test
+	//@Test
 	public void test() {
 		work.goWork();
 	}
 	
-	//@Test
+	@Test
 	public void taxi() {
 		work.goTaxi();
 	}

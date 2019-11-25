@@ -1,13 +1,10 @@
 package com.naver.s4.transfer;
 
-import javax.inject.Inject;
-
 import org.springframework.stereotype.Component;
 
 @Component
 public class Transfer {
 
-	
 	
 	public void getBus(String cardName) {
 		System.out.println("--- BUS ---");
