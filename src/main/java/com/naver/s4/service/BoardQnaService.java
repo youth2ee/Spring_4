@@ -29,11 +29,12 @@ public class BoardQnaService implements BoardService {
 	@Inject
 	private QnaFilesDAO qnaFilesDAO;
 	
-	//
 	
+	//file
 	public int fileDelete(FilesVO filesVO) throws Exception {
 		return qnaFilesDAO.fileDelete(filesVO);
 	}
+	
 	
 	public FilesVO fileSelect(FilesVO filesVO) throws Exception {
 		return qnaFilesDAO.fileSelect(filesVO);
@@ -50,6 +51,7 @@ public class BoardQnaService implements BoardService {
 		return boardQnaDAO.boardList(pager);
 	}
 
+	
 	@Override
 	public BoardVO boardSelect(BoardVO boardVO) throws Exception {
 		boardVO = boardQnaDAO.boardSelect(boardVO);
@@ -65,7 +67,6 @@ public class BoardQnaService implements BoardService {
 
 	@Override
 	public int boardWrite(BoardVO boardVO, MultipartFile [] file, HttpSession session) throws Exception {
-		
 		String realpath = session.getServletContext().getRealPath("resources/upload/qna");
 		String filename = "";
 		

@@ -88,19 +88,19 @@ public class BoardNoticeService implements BoardService {
 		
 		session.setAttribute("realpath", realpath);
 		
-		FilesVO noticeFilesVO = new FilesVO();
+		FilesVO filesVO = new FilesVO();
 		
 		int result = boardNoticeDAO.boardWrite(boardVO);
-		noticeFilesVO.setNum(boardVO.getNum());
+		filesVO.setNum(boardVO.getNum());
 		
 		
 		for(MultipartFile files : file) { 
 			if(files.getOriginalFilename() != "") {
 				filename = fileSaver.save0(realpath,files); 
-				noticeFilesVO.setFname(filename);
-				noticeFilesVO.setOname(files.getOriginalFilename());
+				filesVO.setFname(filename);
+				filesVO.setOname(files.getOriginalFilename());
 
-				result = noticeFilesDAO.fileWrite(noticeFilesVO); 
+				result = noticeFilesDAO.fileWrite(filesVO); 
 			}
 		}
 		  
@@ -133,17 +133,17 @@ public class BoardNoticeService implements BoardService {
 		System.out.println(file);
 		System.out.println("추가 :"+file.length);
 		
-		FilesVO noticeFilesVO = new FilesVO(); 
-		noticeFilesVO.setNum(boardVO.getNum());
+		FilesVO filesVO = new FilesVO(); 
+		filesVO.setNum(boardVO.getNum());
 			
 			for(MultipartFile files : file) {
 				if(files.getOriginalFilename() != "") {
 					//files.getSize() != 0
 					filename = fileSaver.save0(realpath, files);
-					noticeFilesVO.setFname(filename);
-					noticeFilesVO.setOname(files.getOriginalFilename());
+					filesVO.setFname(filename);
+					filesVO.setOname(files.getOriginalFilename());
 
-					result = noticeFilesDAO.fileWrite(noticeFilesVO);
+					result = noticeFilesDAO.fileWrite(filesVO);
 				}
 			}
 

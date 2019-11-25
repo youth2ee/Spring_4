@@ -46,6 +46,7 @@ public class NoticeController {
 		return mv;
 	}
 	
+	
 	@PostMapping("summerFileDelete")
 	public ModelAndView summerFileDelete(String file, HttpSession session) throws Exception {
 		boolean check = boardNoticeService.summerFileDelete(file, session);
