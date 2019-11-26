@@ -120,8 +120,11 @@
 			</table>
 			
 
-			<button class="btn btn-default" id="upd">UPDATE</button>
-			<button class="btn btn-default" id="del">DELETE</button>
+			<c:if test="${member.id eq dto.writer}">
+				<button class="btn btn-default" id="upd">UPDATE</button>
+				<button class="btn btn-default" id="del">DELETE</button>
+			</c:if>
+			
 			
 <%-- 			<a href="./${board}Update?num=${dto.num}">UPDATE</a>
 			<a href="./${board}Delete?num=${dto.num}">DELETE</a> --%>

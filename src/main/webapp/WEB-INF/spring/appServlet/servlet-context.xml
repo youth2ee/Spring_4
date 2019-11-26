@@ -28,6 +28,39 @@
 	</beans:bean>
 	
 	
+	<!-- interceptor에서 참조할 bean : 다만 어노테이션으로 미리 객체만들어놓으면 객체생성 xml에서 안해도 된다. -->
+	<!-- <beans:bean class="com.naver.s4.interceptors.UpdateInterceptor" id="updateInterceptor" /> -->
+	
+	
+	<!-- interceptor -->
+	<interceptors>
+		<!-- preHandle : Login-->
+		<interceptor>
+<!-- 		<mapping path="/qna/*"/>
+			<mapping path="/notice/*"/>
+			<exclude-mapping path="/qna/qnaList"/>
+			<exclude-mapping path="/notice/noticeList"/> -->
+			<mapping path="/**/*"/>
+			<exclude-mapping path="/**/*List"/>
+			
+			<beans:bean class="com.naver.s4.interceptors.LoginInterceptor" />
+		</interceptor>
+		
+		<!-- postHandle -->
+		<interceptor>
+			<mapping path="/**/*Update"/>
+<!-- 		<mapping path="/qna/qnaUpdate"/>
+			<mapping path="/notice/noticeUpdate"/> -->
+			<beans:ref bean="updateInterceptor" />
+		</interceptor>
+		
+	</interceptors>
+	
+
+	
+	
+	
+	
 	
 	<context:component-scan base-package="com.naver.s4" />
 	

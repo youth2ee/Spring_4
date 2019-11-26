@@ -27,9 +27,7 @@ version="2.5">
   
   
   
-
-  
-  
+  <!-- FILTER -->
   <filter>
   	<filter-name>encode</filter-name>
   	<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
@@ -43,6 +41,14 @@ version="2.5">
   	<filter-name>encode</filter-name>
   	<url-pattern>/*</url-pattern>
   </filter-mapping>
+  
+  
+  
+  <!-- ERROR PAGE -->
+  <error-page>
+  	<error-code>404</error-code>
+  	<location>/WEB-INF/views/common/common_400_error.jsp</location>
+  </error-page>
   
   
   
