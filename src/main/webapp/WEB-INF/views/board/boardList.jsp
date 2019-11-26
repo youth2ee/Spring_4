@@ -151,8 +151,9 @@
 				</ul>
 			</div>
 			
-			<a class="C" href="${board}Write">Go ${board} write</a><br>
-			
+			<c:if test="${not empty member}">
+				<a class="C" href="${board}Write">Go ${board} write</a><br>
+			</c:if>
 			
 		</div>
 		
