@@ -45,11 +45,11 @@ version="2.5">
   
   
   <!-- ERROR PAGE -->
-  <error-page>
+<!--   <error-page>
   	<error-code>404</error-code>
   	<location>/WEB-INF/views/common/common_400_error.jsp</location>
   </error-page>
-  
+   -->
   
   
 </web-app>

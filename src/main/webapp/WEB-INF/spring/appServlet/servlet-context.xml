@@ -36,11 +36,10 @@
 	<interceptors>
 		<!-- preHandle : Login-->
 		<interceptor>
-<!-- 		<mapping path="/qna/*"/>
+			<mapping path="/qna/*"/>
 			<mapping path="/notice/*"/>
-			<exclude-mapping path="/qna/qnaList"/>
+			<!-- <exclude-mapping path="/qna/qnaList"/>
 			<exclude-mapping path="/notice/noticeList"/> -->
-			<mapping path="/**/*"/>
 			<exclude-mapping path="/**/*List"/>
 			
 			<beans:bean class="com.naver.s4.interceptors.LoginInterceptor" />

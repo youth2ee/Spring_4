@@ -8,6 +8,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -28,6 +29,28 @@ public class NoticeController {
 	
 	@Inject
 	private BoardNoticeService boardNoticeService;
+	
+	
+	
+	/*
+	 * //exception 처리
+	 * 
+	 * @ExceptionHandler(NullPointerException.class) public ModelAndView getNull() {
+	 * ModelAndView mv = new ModelAndView();
+	 * mv.setViewName("common/common_500_error"); return mv; }
+	 * 
+	 * //exception 처리
+	 * 
+	 * @ExceptionHandler(NumberFormatException.class) public ModelAndView
+	 * getNumber() { ModelAndView mv = new ModelAndView();
+	 * mv.setViewName("common/common_500_error"); return mv; }
+	 * 
+	 * //exception 처리
+	 * 
+	 * @ExceptionHandler(Exception.class) public ModelAndView getException() {
+	 * ModelAndView mv = new ModelAndView();
+	 * mv.setViewName("common/common_500_error"); return mv; }
+	 */
 	
 	
 	
