@@ -23,7 +23,7 @@ public class ExceptionController {
 	public ModelAndView getClient() {
 		
 		ModelAndView mv = new ModelAndView();
-		mv.setViewName("common/common_400_error");
+		mv.setViewName("common/common_500_error");
 		return mv;
 	}
 	

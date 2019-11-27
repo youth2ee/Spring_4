@@ -16,12 +16,34 @@
 		<P>The time on the server is ${serverTime}.</P>
 	</div>
 	
-	<div id="index" >
-	</div>
+	
+	<div id="index"></div>
+	
+	<button id="btn">Get Json1</button>
+	
 	
 	<script type="text/javascript">
+		//summernote
 		$('#index').summernote();
+		
+		//json
+		$('#btn').click(function() {
+			$.get("./getJson1", function(data) {
+				data = data.trim();
+				//alert(typeof data); //data의 데이터타입을 묻는다. -> 여기서는 String타입임
+				data = JSON.parse(data); //형변환해야한다. json object로  -> json object로 형이 변환됨
+				
+				
+				//
+				alert(data.name); //json object에서 키를 불러온다.
+				
+				
+			});
+		});
+		
+		
 	</script>
+
 
 </body>
 </html>
