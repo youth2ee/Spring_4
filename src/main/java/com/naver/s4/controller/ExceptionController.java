@@ -19,13 +19,12 @@ public class ExceptionController {
 	}
 	
 	
-	@ResponseStatus(HttpStatus.NOT_FOUND)
-	public ModelAndView getClient() {
-		
-		ModelAndView mv = new ModelAndView();
-		mv.setViewName("common/common_500_error");
-		return mv;
-	}
+	/*
+	 * @ResponseStatus(HttpStatus.NOT_FOUND) public ModelAndView getClient() {
+	 * 
+	 * ModelAndView mv = new ModelAndView();
+	 * mv.setViewName("common/common_500_error"); return mv; }
+	 */
 	
 
 }
