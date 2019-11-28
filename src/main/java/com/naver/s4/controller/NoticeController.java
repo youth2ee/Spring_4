@@ -83,8 +83,8 @@ public class NoticeController {
 	@PostMapping("fileDelete")
 	public ModelAndView fileDelete(FilesVO filesVO) throws Exception {
 		
-		System.out.println("Delete");
-		System.out.println(filesVO.getFnum());
+		//System.out.println("Delete");
+		//System.out.println(filesVO.getFnum());
 		
 		int result = boardNoticeService.fileDelete(filesVO);
 		

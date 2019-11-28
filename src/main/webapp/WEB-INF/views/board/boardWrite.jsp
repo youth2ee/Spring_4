@@ -157,11 +157,10 @@
 			});
 			
 				
-		}//delete : fun
+		}
+		//delete : fun
 		
-		
-		
-		
+	
 		//contents의 값 받기
 	/* 	$("#btn").click(function() {
 			//alert($("#contents").val());
@@ -171,7 +170,6 @@
 		
 		//contents에 값 넣기
 		//$("#contents").summernote('code','Hello');
-		
 		
 
 	</script>
