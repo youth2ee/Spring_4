@@ -8,6 +8,8 @@
 <body>
 	<c:import url="./layout/nav.jsp" />
 
+
+
 	<div style="padding-left: 20px;">
 		<h1>Hello world!</h1>
 		<P>The time on the server is ${serverTime}.</P>
