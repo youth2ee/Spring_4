@@ -48,7 +48,7 @@ version="2.5">
   <!-- ERROR PAGE : 400번대는 이렇게 해야한다. 500번대는 controller에서 처리할수도 있음. -->
    <error-page>
   	<error-code>404</error-code>
-  	<error-code>400</error-code>
+  	<!-- <error-code>400</error-code> -->
   	<location>/WEB-INF/views/common/common_400_error.jsp</location>
   </error-page>
   
