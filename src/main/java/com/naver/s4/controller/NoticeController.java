@@ -6,6 +6,7 @@ import java.util.List;
 import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -29,6 +30,10 @@ public class NoticeController {
 	
 	@Inject
 	private BoardNoticeService boardNoticeService;
+	
+	
+	@Value("${notice}") //common.properties에서 키값을 통해 value값 호출
+	private String board;
 	
 	
 	
@@ -128,7 +133,9 @@ public class NoticeController {
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("list", ar);
 		mv.addObject("pager", pager);
-		mv.addObject("board", "notice");
+		
+		//properties 사용하기 : common.properties에서 board 받아오기
+		mv.addObject("board", board);
 		
 		mv.setViewName("board/boardList");
 		

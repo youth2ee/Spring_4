@@ -6,6 +6,7 @@ import java.util.List;
 import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
@@ -31,6 +32,12 @@ public class BoardNoticeService implements BoardService {
 	
 	@Inject
 	private NoticeFilesDAO noticeFilesDAO;
+	
+
+	@Value("${notice}") //properties에서 키값 notice로 가져온 value값인 notice값을 멤버변수로 지정한 String타입의 board에 넣어줌
+	private String board;
+	
+	
 	
 	
 	//summer 
@@ -83,7 +90,8 @@ public class BoardNoticeService implements BoardService {
 	//@Transactional
 	@Override
 	public int boardWrite(BoardVO boardVO, MultipartFile [] file, HttpSession session) throws Exception {
-		String realpath = session.getServletContext().getRealPath("resources/upload/notice");
+		String realpath = session.getServletContext().getRealPath("resources/upload/" + board); //properties 참조
+		System.out.println(realpath);
 		String filename = "";
 		
 		session.setAttribute("realpath", realpath);

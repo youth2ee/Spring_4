@@ -22,6 +22,7 @@
 		<beans:property name="order" value="1"/>
 	</beans:bean>
 	
+	
 	<!-- filedown -->
 	<beans:bean class="org.springframework.web.servlet.view.BeanNameViewResolver">
 		<beans:property name="order" value="0"/>
@@ -55,10 +56,11 @@
 		
 	</interceptors>
 	
+	
+	<!-- properties 속성 가져오기 -->
+	<context:property-placeholder file-encoding="UTF-8" location="classpath:/properties/**/*.properties"/>
+	
 
-	
-	
-	
 	
 	
 	<context:component-scan base-package="com.naver.s4" />
