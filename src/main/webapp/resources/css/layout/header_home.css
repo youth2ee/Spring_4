@@ -1,0 +1,26 @@
+@charset "UTF-8";
+
+#header{
+	width: 100%;
+}
+
+#head{
+	width: 90%;
+	height: 20%;
+	margin: 0 auto;
+	background-color: olive;
+}
+
+#h1{
+	width:35%;
+	background-color: red;
+	float: left;
+	padding-top: 3%;
+}
+
+#h2{
+	width:50%;
+	background-color: orange;
+	float: right;
+	padding-top: 17%;
+}
