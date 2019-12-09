@@ -10,7 +10,6 @@
 <style type="text/css">
 .div_t {
 	width: 70%;
-
 	margin: 0 auto;
 	background-color: rgb(240, 240, 240);
 }
